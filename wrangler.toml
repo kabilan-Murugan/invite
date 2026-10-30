@@ -2,13 +2,5 @@ name = "wedding-invitation"
 compatibility_date = "2024-09-23"
 pages_build_output_dir = "dist"
 
-# To create a D1 database: npx wrangler d1 create wedding-db
-# Paste the generated database_id below:
-[[d1_databases]]
-binding = "DB"
-database_name = "wedding-db"
-database_id = "00000000-0000-0000-0000-000000000000"
-
 [vars]
 NODE_VERSION = "20"
-

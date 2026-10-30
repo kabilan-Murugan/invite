@@ -107,80 +107,34 @@ The compiled, code-split static files will be in the `/dist` directory.
 
 ---
 
-## 🚀 Cloudflare Pages Deployment Guide
+## 🚀 Cloudflare Pages Deployment (Zero Database Required! ⚡)
 
-### Architecture on Cloudflare
-- **Static Hosting**: Cloudflare Pages serves the `/dist` folder edge-cached worldwide.
-- **Routing**: `public/_redirects` ensures client-side routing (`/* /index.html 200`) works seamlessly.
-- **Security & Caching**: `public/_headers` configures immutable asset caching for hashed fonts/images and sets security headers (`X-Content-Type-Options`, `Referrer-Policy`).
-- **Serverless Backend**: `functions/api/rsvp.ts` and `functions/api/admin.ts` run on Cloudflare Pages Functions.
-- **Database**: Cloudflare D1 SQL database stores RSVP submissions securely.
+Deploying to Cloudflare Pages is completely free, instant, and requires **NO database configuration**:
+- All customizations (names, dates, photos, colors, music, timeline) run in-browser and save to `localStorage`.
+- All guest RSVPs forward directly to the family's WhatsApp with full details.
 
 ---
 
-### Step-by-Step Cloudflare Setup
-
-#### Step 1: Create the Cloudflare D1 Database
-Make sure you have Wrangler installed (`npm install -g wrangler` or use `npx wrangler`):
-```bash
-npx wrangler login
-npx wrangler d1 create wedding-db
-```
-Wrangler will output your database configuration:
-```toml
-[[d1_databases]]
-binding = "DB"
-database_name = "wedding-db"
-database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-```
-
-#### Step 2: Apply the Database Schema
-Execute the SQL schema to create the `rsvps` table and indexes:
-```bash
-npx wrangler d1 execute wedding-db --file=./schema.sql
-```
-
-#### Step 3: Configure `wrangler.toml`
-Paste the `database_id` generated in Step 1 into `wrangler.toml`:
-```toml
-name = "wedding-invitation"
-compatibility_date = "2024-09-23"
-pages_build_output_dir = "dist"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "wedding-db"
-database_id = "YOUR_ACTUAL_D1_DATABASE_ID_HERE"
-```
-
-#### Step 4: Test Cloudflare Functions Locally
-```bash
-npm run build
-npx wrangler pages dev dist --d1 DB=wedding-db
-```
-This tests both static assets and `/api/rsvp` / `/api/admin` with your local D1 emulator!
+### Step 1: Connect to Cloudflare Pages
+1. Push this project to your GitHub repository.
+2. In the [Cloudflare Dashboard](https://dash.cloudflare.com/), go to **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**.
+3. Select your repository.
 
 ---
 
-### Connecting to GitHub & Cloudflare Pages Dashboard
+### Step 2: Enter These 3 Build Parameters
+In the build settings:
+- **Framework preset**: `Vite`
+- **Build command**: `npm run build`
+- **Build output directory**: `dist`
 
-1. Push this repository to **GitHub**.
-2. Log into the [Cloudflare Dashboard](https://dash.cloudflare.com/) and navigate to **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**.
-3. Select your repository and configure the build settings:
-   - **Framework preset**: `Vite`
-   - **Build command**: `npm run build`
-   - **Build output directory**: `dist`
-4. In **Environment variables (Build & Production)**:
-   - `NODE_VERSION`: `20`
-   - `VITE_SITE_URL`: `https://your-custom-domain.com`
-   - `VITE_WHATSAPP_NUMBER`: `919876543210`
-   - `VITE_MAPS_EMBED_URL`: (Optional Google Maps embed link)
-5. In **Settings** > **Functions** > **D1 database bindings**:
-   - Variable name: `DB`
-   - D1 database: select `wedding-db`
-6. In **Settings** > **Environment variables**:
-   - Add secret variable: `ADMIN_PASSWORD` (e.g. `your-secret-password-here`)
-7. Click **Save and Deploy**.
+---
+
+### Step 3: Add 1 Environment Variable
+Under **Environment variables (Advanced)**, add:
+- `NODE_VERSION` = `20`
+
+Click **Save and Deploy**! Your website is live worldwide with free SSL and edge caching!
 
 ---
 
