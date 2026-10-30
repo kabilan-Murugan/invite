@@ -49,23 +49,25 @@ export const RSVP: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/rsvp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error ${response.status}`);
+      // Save locally to browser for Admin RSVP viewer
+      if (typeof window !== 'undefined') {
+        try {
+          const existing = JSON.parse(localStorage.getItem('wedding_local_rsvps') || '[]');
+          const newRecord = {
+            id: Date.now(),
+            name: values.name,
+            guests: values.guests,
+            attending: values.attending,
+            events: values.events.join(', '),
+            message: values.message || '',
+            created_at: new Date().toISOString().replace('T', ' ').substring(0, 19),
+          };
+          localStorage.setItem('wedding_local_rsvps', JSON.stringify([newRecord, ...existing]));
+        } catch {
+          // localStorage fallback
+        }
       }
 
-      await response.json();
-      setSubmittedData(values);
-      setIsSubmitted(true);
-      fireCelebrationConfetti();
-    } catch (err: any) {
-      console.warn('Online RSVP submission failed, enabling WhatsApp fallback:', err);
-      // Graceful degradation: record locally and let user confirm via WhatsApp
       setSubmittedData(values);
       setIsSubmitted(true);
       fireCelebrationConfetti();
