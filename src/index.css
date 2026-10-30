@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+:root {
+  --theme-primary: #0F4336;
+  --theme-primary-dark: #0A2B23;
+  --theme-primary-light: #1A5E4C;
+  --theme-gold: #D4AF37;
+  --theme-gold-light: #F3E198;
+  --theme-gold-dark: #987413;
+  --theme-bg: #FDFBF7;
+  --theme-bg-light: #FFFEFA;
+  --theme-card-bg: #F4EFE6;
+  --theme-card-dark: #E8DFC8;
+  --theme-text: #1E2723;
+  --theme-text-muted: #4B5A53;
+
+  --theme-primary-rgb: 15, 67, 54;
+  --theme-primary-dark-rgb: 10, 43, 35;
+  --theme-gold-rgb: 212, 175, 55;
+  --theme-gold-light-rgb: 243, 225, 152;
+  --theme-bg-rgb: 253, 251, 247;
+}
+
+@theme {
+  --color-ivory: var(--theme-bg);
+  --color-ivory-light: var(--theme-bg-light);
+  --color-primary: var(--theme-primary);
+  --color-primary-dark: var(--theme-primary-dark);
+  --color-primary-light: var(--theme-primary-light);
+  --color-gold: var(--theme-gold);
+  --color-gold-light: var(--theme-gold-light);
+  --color-gold-dark: var(--theme-gold-dark);
+  --color-sand: var(--theme-card-bg);
+  --color-sand-dark: var(--theme-card-dark);
+  --color-charcoal: var(--theme-text);
+  --color-charcoal-muted: var(--theme-text-muted);
+
+  --font-script: "Great Vibes", cursive;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-malayalam-serif: "Noto Serif Malayalam", serif;
+  --font-malayalam-sans: "Noto Sans Malayalam", sans-serif;
+}
+
+/* Custom Utilities and Dynamic Theme Accents */
+@layer utilities {
+  .font-wedding-display {
+    font-family: var(--font-script);
+  }
+  .font-wedding-serif {
+    font-family: var(--font-serif);
+  }
+  .font-wedding-body {
+    font-family: var(--font-sans);
+  }
+  .font-malayalam-display {
+    font-family: var(--font-malayalam-serif);
+  }
+  .font-malayalam-body {
+    font-family: var(--font-malayalam-sans);
+  }
+  
+  .glass-card {
+    background: rgba(var(--theme-bg-rgb), 0.90);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(var(--theme-gold-rgb), 0.3);
+  }
+
+  .glass-card-emerald {
+    background: rgba(var(--theme-primary-rgb), 0.90);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(var(--theme-gold-light-rgb), 0.35);
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(135deg, var(--theme-gold-light) 0%, var(--theme-gold) 50%, var(--theme-gold-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gold-gradient-bg {
+    background: linear-gradient(135deg, var(--theme-gold-light) 0%, var(--theme-gold) 50%, var(--theme-gold-dark) 100%);
+  }
+
+  .emerald-gradient-bg {
+    background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-dark) 100%);
+  }
+}
+
+/* Dynamic CSS variable bridge for existing components */
+.bg-\[\#0F4336\] { background-color: var(--theme-primary) !important; }
+.text-\[\#0F4336\] { color: var(--theme-primary) !important; }
+.border-\[\#0F4336\] { border-color: var(--theme-primary) !important; }
+.fill-\[\#0F4336\] { fill: var(--theme-primary) !important; }
+
+.bg-\[\#0A2B23\] { background-color: var(--theme-primary-dark) !important; }
+.text-\[\#0A2B23\] { color: var(--theme-primary-dark) !important; }
+.border-\[\#0A2B23\] { border-color: var(--theme-primary-dark) !important; }
+
+.bg-\[\#1A5E4C\] { background-color: var(--theme-primary-light) !important; }
+.text-\[\#1A5E4C\] { color: var(--theme-primary-light) !important; }
+
+.text-\[\#D4AF37\] { color: var(--theme-gold) !important; }
+.bg-\[\#D4AF37\] { background-color: var(--theme-gold) !important; }
+.border-\[\#D4AF37\] { border-color: var(--theme-gold) !important; }
+.fill-\[\#D4AF37\] { fill: var(--theme-gold) !important; }
+
+.text-\[\#F3E198\] { color: var(--theme-gold-light) !important; }
+.bg-\[\#F3E198\] { background-color: var(--theme-gold-light) !important; }
+.border-\[\#F3E198\] { border-color: var(--theme-gold-light) !important; }
+.fill-\[\#F3E198\] { fill: var(--theme-gold-light) !important; }
+
+.text-\[\#987413\] { color: var(--theme-gold-dark) !important; }
+.border-\[\#987413\] { border-color: var(--theme-gold-dark) !important; }
+
+.bg-\[\#FDFBF7\] { background-color: var(--theme-bg) !important; }
+.text-\[\#FDFBF7\] { color: var(--theme-bg) !important; }
+.bg-\[\#F4EFE6\] { background-color: var(--theme-card-bg) !important; }
+.text-\[\#1E2723\] { color: var(--theme-text) !important; }
+
+.bg-\[\#0F4336\]\/10 { background-color: rgba(var(--theme-primary-rgb), 0.1) !important; }
+.bg-\[\#0F4336\]\/15 { background-color: rgba(var(--theme-primary-rgb), 0.15) !important; }
+.bg-\[\#0F4336\]\/20 { background-color: rgba(var(--theme-primary-rgb), 0.2) !important; }
+.bg-\[\#0F4336\]\/80 { background-color: rgba(var(--theme-primary-rgb), 0.8) !important; }
+.bg-\[\#0F4336\]\/90 { background-color: rgba(var(--theme-primary-rgb), 0.9) !important; }
+.bg-\[\#0F4336\]\/95 { background-color: rgba(var(--theme-primary-rgb), 0.95) !important; }
+
+.border-\[\#D4AF37\]\/20 { border-color: rgba(var(--theme-gold-rgb), 0.2) !important; }
+.border-\[\#D4AF37\]\/30 { border-color: rgba(var(--theme-gold-rgb), 0.3) !important; }
+.border-\[\#D4AF37\]\/40 { border-color: rgba(var(--theme-gold-rgb), 0.4) !important; }
+.border-\[\#D4AF37\]\/50 { border-color: rgba(var(--theme-gold-rgb), 0.5) !important; }
+
+.border-\[\#F3E198\]\/30 { border-color: rgba(var(--theme-gold-light-rgb), 0.3) !important; }
+.border-\[\#F3E198\]\/40 { border-color: rgba(var(--theme-gold-light-rgb), 0.4) !important; }
+.border-\[\#F3E198\]\/50 { border-color: rgba(var(--theme-gold-light-rgb), 0.5) !important; }
+
+.from-\[\#0A2B23\] { --tw-gradient-from: var(--theme-primary-dark) var(--tw-gradient-from-position) !important; }
+.from-\[\#0F4336\] { --tw-gradient-from: var(--theme-primary) var(--tw-gradient-from-position) !important; }
+.via-\[\#0F4336\]\/60 { --tw-gradient-via: rgba(var(--theme-primary-rgb), 0.6) var(--tw-gradient-via-position) !important; }
+.via-\[\#0A2B23\] { --tw-gradient-via: var(--theme-primary-dark) var(--tw-gradient-via-position) !important; }
+.to-\[\#051713\] { --tw-gradient-to: rgba(var(--theme-primary-dark-rgb), 0.9) var(--tw-gradient-to-position) !important; }
+
+/* Base resets & smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-charcoal);
+  background-color: var(--color-ivory);
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print CSS for printable A5 invitation card */
+@media print {
+  body {
+    background: #FFF !important;
+    color: #000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  @page {
+    size: A5 portrait;
+    margin: 10mm;
+  }
+}
