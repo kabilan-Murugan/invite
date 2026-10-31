@@ -27,6 +27,11 @@ import {
   Upload,
   Volume2,
   KeyRound,
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
+  LayoutGrid,
+  SlidersHorizontal,
 } from 'lucide-react';
 import { useWedding } from '../context/WeddingContext';
 import {
@@ -37,6 +42,40 @@ import {
   THEME_PRESETS,
   AUDIO_PRESETS,
 } from '../data/wedding';
+
+export type AdminTabId =
+  | 'theme'
+  | 'music'
+  | 'couple'
+  | 'events'
+  | 'countdown'
+  | 'story'
+  | 'gallery'
+  | 'venue'
+  | 'contacts'
+  | 'rsvps';
+
+export interface AdminTabDef {
+  id: AdminTabId;
+  label: string;
+  short: string;
+  emoji: string;
+  icon: React.ComponentType<{ className?: string }>;
+  category: string;
+}
+
+export const ADMIN_TABS: AdminTabDef[] = [
+  { id: 'theme', label: 'Colors & Theme', short: 'Colors', emoji: '🎨', icon: Palette, category: 'Design' },
+  { id: 'music', label: 'Music & Songs', short: 'Music', emoji: '🎵', icon: Music, category: 'Media' },
+  { id: 'couple', label: 'Couple & Names', short: 'Couple', emoji: '💍', icon: Users, category: 'Details' },
+  { id: 'events', label: 'Ceremonies & Dates', short: 'Events', emoji: '📅', icon: Calendar, category: 'Schedule' },
+  { id: 'countdown', label: 'Countdown & SEO', short: 'Countdown', emoji: '⏳', icon: Clock, category: 'Schedule' },
+  { id: 'story', label: 'Timeline (Our Story)', short: 'Timeline', emoji: '📖', icon: Sparkles, category: 'Story' },
+  { id: 'gallery', label: 'Photo Gallery', short: 'Gallery', emoji: '📸', icon: ImageIcon, category: 'Media' },
+  { id: 'venue', label: 'Venue, Map & Travel', short: 'Venue', emoji: '📍', icon: MapPin, category: 'Location' },
+  { id: 'contacts', label: 'Contacts & Security', short: 'Contacts', emoji: '📞', icon: Phone, category: 'Security' },
+  { id: 'rsvps', label: 'Guest RSVPs', short: 'RSVPs', emoji: '✉️', icon: CheckCircle, category: 'Responses' },
+];
 
 interface RsvpRecord {
   id: number;
@@ -61,11 +100,45 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authError, setAuthError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<
-    'theme' | 'couple' | 'events' | 'music' | 'countdown' | 'story' | 'gallery' | 'venue' | 'contacts' | 'rsvps'
-  >('theme');
+  const [activeTab, setActiveTab] = useState<AdminTabId>('theme');
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [copiedCode, setCopiedCode] = useState(false);
+
+  // Flexible menu layout: 'wrap' (multi-line pills) or 'scroll' (horizontal strip with arrows)
+  const [menuLayout, setMenuLayout] = useState<'wrap' | 'scroll'>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('wedding_admin_menu_layout') as 'wrap' | 'scroll') || 'wrap';
+    }
+    return 'wrap';
+  });
+
+  const tabStripRef = useRef<HTMLDivElement | null>(null);
+  const activeTabRef = useRef<HTMLButtonElement | null>(null);
+
+  const handleSetMenuLayout = (layout: 'wrap' | 'scroll') => {
+    setMenuLayout(layout);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('wedding_admin_menu_layout', layout);
+    }
+  };
+
+  const scrollTabStrip = (direction: 'left' | 'right') => {
+    if (tabStripRef.current) {
+      const amount = direction === 'left' ? -240 : 240;
+      tabStripRef.current.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+  };
+
+  // Keep active tab centered in scroll view
+  useEffect(() => {
+    if (menuLayout === 'scroll' && activeTabRef.current) {
+      activeTabRef.current.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'nearest',
+      });
+    }
+  }, [activeTab, menuLayout]);
 
   // Editable Draft state initialized with current wedding config
   const [formData, setFormData] = useState<WeddingConfig>(() => JSON.parse(JSON.stringify(wedding)));
@@ -371,6 +444,68 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       (r.message && r.message.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
+  const renderTabFooterNav = (tabId: AdminTabId) => {
+    const currentIndex = ADMIN_TABS.findIndex((t) => t.id === tabId);
+    const prevTab = currentIndex > 0 ? ADMIN_TABS[currentIndex - 1] : null;
+    const nextTab = currentIndex < ADMIN_TABS.length - 1 ? ADMIN_TABS[currentIndex + 1] : null;
+
+    return (
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 mt-8 border-t border-stone-200">
+        <div>
+          {prevTab ? (
+            <button
+              type="button"
+              onClick={() => {
+                setActiveTab(prevTab.id);
+                window.scrollTo({ top: 120, behavior: 'smooth' });
+              }}
+              className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white border border-stone-300 text-stone-700 text-xs font-semibold hover:bg-stone-50 active:scale-95 transition-all shadow-sm cursor-pointer"
+            >
+              <ChevronLeft className="w-4 h-4 text-stone-500" />
+              <span>Previous: {prevTab.emoji} {prevTab.short}</span>
+            </button>
+          ) : (
+            <div />
+          )}
+        </div>
+
+        <button
+          type="button"
+          onClick={handleSave}
+          className="flex items-center gap-1.5 px-6 py-2.5 rounded-xl bg-[#0F4336] text-white text-xs font-semibold hover:bg-[#0A2B23] active:scale-95 transition-all shadow-md cursor-pointer"
+        >
+          <Save className="w-4 h-4 text-[#F3E198]" />
+          <span>{saveSuccess ? 'Saved Live to Website!' : 'Save Changes'}</span>
+        </button>
+
+        <div>
+          {nextTab ? (
+            <button
+              type="button"
+              onClick={() => {
+                setActiveTab(nextTab.id);
+                window.scrollTo({ top: 120, behavior: 'smooth' });
+              }}
+              className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#0F4336]/10 text-[#0F4336] border border-[#0F4336]/20 text-xs font-semibold hover:bg-[#0F4336]/20 active:scale-95 transition-all shadow-sm cursor-pointer"
+            >
+              <span>Next: {nextTab.emoji} {nextTab.short}</span>
+              <ChevronRight className="w-4 h-4 text-[#0F4336]" />
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={onBack}
+              className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white border border-stone-300 text-stone-700 text-xs font-semibold hover:bg-stone-50 active:scale-95 transition-all shadow-sm cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back to Invitation</span>
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-stone-900 font-sans pb-24">
       {/* Top Banner Navigation */}
@@ -495,38 +630,161 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
               </div>
             )}
 
-            {/* Navigation Tabs */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-stone-200 scrollbar-none">
-              {[
-                { id: 'theme', label: '🎨 Colors & Theme', icon: Palette },
-                { id: 'music', label: '🎵 Music & Songs', icon: Music },
-                { id: 'couple', label: '💍 Couple & Names', icon: Users },
-                { id: 'events', label: '📅 Ceremonies & Dates', icon: Calendar },
-                { id: 'countdown', label: '⏳ Countdown & SEO', icon: Clock },
-                { id: 'story', label: '📖 Timeline (Our Story)', icon: Sparkles },
-                { id: 'gallery', label: '📸 Photo Gallery', icon: ImageIcon },
-                { id: 'venue', label: '📍 Venue, Map & Travel', icon: MapPin },
-                { id: 'contacts', label: '📞 Contacts & Password', icon: Phone },
-                { id: 'rsvps', label: '✉️ Guest RSVPs', icon: CheckCircle },
-              ].map((tab) => {
-                const Icon = tab.icon;
-                const isActive = activeTab === tab.id;
-                return (
+            {/* Flexible Admin Navigation Menu */}
+            <div className="bg-white/95 backdrop-blur-md p-3.5 sm:p-4 rounded-2xl border border-stone-200 shadow-sm space-y-3 sticky top-2 z-30 transition-all">
+              {/* Menu Subheader: Current Section Status & Layout Switcher */}
+              <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-stone-100 pb-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-stone-400">
+                    Section {ADMIN_TABS.findIndex((t) => t.id === activeTab) + 1} of {ADMIN_TABS.length}:
+                  </span>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0F4336]/10 text-[#0F4336] text-xs font-bold border border-[#0F4336]/15">
+                    <span>{ADMIN_TABS.find((t) => t.id === activeTab)?.emoji}</span>
+                    <span>{ADMIN_TABS.find((t) => t.id === activeTab)?.label}</span>
+                  </div>
+                </div>
+
+                {/* View Layout Switcher (Wrap All vs Scroll Ribbon) */}
+                <div className="flex items-center gap-1 bg-stone-100/90 p-1 rounded-xl text-stone-600 border border-stone-200/80">
                   <button
-                    key={tab.id}
                     type="button"
-                    onClick={() => setActiveTab(tab.id as any)}
-                    className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
-                      isActive
-                        ? 'bg-[#0F4336] text-white shadow-sm ring-1 ring-[#0F4336]'
-                        : 'bg-white text-stone-600 hover:text-[#0F4336] border border-stone-200'
+                    onClick={() => handleSetMenuLayout('wrap')}
+                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                      menuLayout === 'wrap'
+                        ? 'bg-white text-[#0F4336] shadow-sm font-bold'
+                        : 'text-stone-500 hover:text-stone-900'
                     }`}
+                    title="Wrap all 10 section tabs into visible rows so none are ever cut off"
                   >
-                    <Icon className="w-3.5 h-3.5" />
-                    <span>{tab.label}</span>
+                    <LayoutGrid className="w-3.5 h-3.5" />
+                    <span>Wrap All (10)</span>
                   </button>
-                );
-              })}
+
+                  <button
+                    type="button"
+                    onClick={() => handleSetMenuLayout('scroll')}
+                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                      menuLayout === 'scroll'
+                        ? 'bg-white text-[#0F4336] shadow-sm font-bold'
+                        : 'text-stone-500 hover:text-stone-900'
+                    }`}
+                    title="Show single-line scrollable ribbon with arrow controls"
+                  >
+                    <SlidersHorizontal className="w-3.5 h-3.5" />
+                    <span>Scroll Ribbon</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Mobile Quick Dropdown (Visible on small screens) */}
+              <div className="sm:hidden w-full">
+                <div className="relative">
+                  <select
+                    id="admin-tab-dropdown"
+                    value={activeTab}
+                    onChange={(e) => setActiveTab(e.target.value as AdminTabId)}
+                    className="w-full appearance-none bg-stone-50 border border-stone-300 text-stone-800 text-xs font-semibold rounded-xl px-3.5 py-2.5 pr-9 shadow-inner focus:outline-none focus:ring-2 focus:ring-[#0F4336]"
+                  >
+                    {ADMIN_TABS.map((tab, idx) => (
+                      <option key={tab.id} value={tab.id}>
+                        {idx + 1}. {tab.emoji} {tab.label}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="w-4 h-4 text-stone-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Tab Pills Rendering */}
+              {menuLayout === 'wrap' ? (
+                /* WRAP MODE: All 10 tabs wrap naturally into flexible rows - no clipping */
+                <div className="flex flex-wrap items-center gap-2 pt-0.5">
+                  {ADMIN_TABS.map((tab, idx) => {
+                    const Icon = tab.icon;
+                    const isActive = activeTab === tab.id;
+                    return (
+                      <button
+                        key={tab.id}
+                        type="button"
+                        onClick={() => setActiveTab(tab.id)}
+                        className={`group flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                          isActive
+                            ? 'bg-[#0F4336] text-white shadow-md ring-2 ring-[#D4AF37] scale-102 font-bold'
+                            : 'bg-white text-stone-700 hover:text-[#0F4336] hover:bg-stone-50 border border-stone-200 hover:border-stone-400 active:scale-98'
+                        }`}
+                      >
+                        <span className="text-sm">{tab.emoji}</span>
+                        <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#F3E198]' : 'text-stone-400 group-hover:text-[#0F4336]'}`} />
+                        <span>{tab.label}</span>
+                        <span
+                          className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                            isActive ? 'bg-white/20 text-white' : 'bg-stone-100 text-stone-400'
+                          }`}
+                        >
+                          {idx + 1}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : (
+                /* SCROLL MODE: Ribbon with smooth scroll arrow controls */
+                <div className="relative flex items-center gap-1.5 pt-0.5">
+                  <button
+                    type="button"
+                    onClick={() => scrollTabStrip('left')}
+                    className="shrink-0 p-2 rounded-xl bg-white border border-stone-200 text-stone-600 hover:bg-stone-50 hover:text-[#0F4336] active:scale-90 shadow-sm cursor-pointer transition-all"
+                    title="Scroll left"
+                    aria-label="Scroll tabs left"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+
+                  <div
+                    ref={tabStripRef}
+                    className="flex items-center gap-2 overflow-x-auto py-1 scroll-smooth scrollbar-thin scrollbar-thumb-stone-300 w-full"
+                  >
+                    {ADMIN_TABS.map((tab, idx) => {
+                      const Icon = tab.icon;
+                      const isActive = activeTab === tab.id;
+                      return (
+                        <button
+                          key={tab.id}
+                          ref={isActive ? activeTabRef : undefined}
+                          type="button"
+                          onClick={() => setActiveTab(tab.id)}
+                          className={`group flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
+                            isActive
+                              ? 'bg-[#0F4336] text-white shadow-md ring-2 ring-[#D4AF37] font-bold'
+                              : 'bg-white text-stone-700 hover:text-[#0F4336] hover:bg-stone-50 border border-stone-200 hover:border-stone-400 active:scale-98'
+                          }`}
+                        >
+                          <span className="text-sm">{tab.emoji}</span>
+                          <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#F3E198]' : 'text-stone-400 group-hover:text-[#0F4336]'}`} />
+                          <span>{tab.label}</span>
+                          <span
+                            className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                              isActive ? 'bg-white/20 text-white' : 'bg-stone-100 text-stone-400'
+                            }`}
+                          >
+                            {idx + 1}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => scrollTabStrip('right')}
+                    className="shrink-0 p-2 rounded-xl bg-white border border-stone-200 text-stone-600 hover:bg-stone-50 hover:text-[#0F4336] active:scale-90 shadow-sm cursor-pointer transition-all"
+                    title="Scroll right"
+                    aria-label="Scroll tabs right"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* TAB 1: COLORS & THEME */}
@@ -707,6 +965,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     </button>
                   </div>
                 </div>
+
+                {renderTabFooterNav('theme')}
               </div>
             )}
 
@@ -913,6 +1173,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     </div>
                   </div>
                 </div>
+
+                {renderTabFooterNav('music')}
               </div>
             )}
 
@@ -1145,6 +1407,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     </div>
                   </div>
                 </div>
+
+                {renderTabFooterNav('couple')}
               </div>
             )}
 
@@ -1340,6 +1604,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     </div>
                   ))}
                 </div>
+
+                {renderTabFooterNav('events')}
               </div>
             )}
 
@@ -1439,6 +1705,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     </div>
                   </div>
                 </div>
+
+                {renderTabFooterNav('countdown')}
               </div>
             )}
 
@@ -1572,6 +1840,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     </div>
                   ))}
                 </div>
+
+                {renderTabFooterNav('story')}
               </div>
             )}
 
@@ -1700,6 +1970,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     </div>
                   ))}
                 </div>
+
+                {renderTabFooterNav('gallery')}
               </div>
             )}
 
@@ -1896,6 +2168,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     </div>
                   </div>
                 </div>
+
+                {renderTabFooterNav('venue')}
               </div>
             )}
 
@@ -2115,6 +2389,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     placeholder="Enter new password"
                   />
                 </div>
+
+                {renderTabFooterNav('contacts')}
               </div>
             )}
 
@@ -2218,6 +2494,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     </div>
                   )}
                 </div>
+
+                {renderTabFooterNav('rsvps')}
               </div>
             )}
           </div>
