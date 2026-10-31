@@ -80,11 +80,10 @@ export const EventDetails: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
-                className={`relative rounded-3xl p-5 sm:p-6 flex flex-col justify-between shadow-lg transition-all hover:shadow-xl w-full box-border ${
-                  isMuhurtham
+                className={`relative rounded-3xl p-5 sm:p-6 flex flex-col justify-between shadow-lg transition-all hover:shadow-xl w-full box-border ${isMuhurtham
                     ? 'bg-gradient-to-b from-[#FFFEFA] to-[#F4EFE6] border-2 border-[#D4AF37] ring-2 ring-[#D4AF37]/20 md:col-span-2 lg:col-span-1'
                     : 'glass-card border border-[#D4AF37]/30'
-                }`}
+                  }`}
               >
                 {/* Most Auspicious Crown Badge */}
                 {isMuhurtham && (
