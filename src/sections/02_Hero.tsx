@@ -40,7 +40,7 @@ export const Hero: React.FC = () => {
       {/* Foreground Content Card */}
       <motion.div
         style={{ opacity: opacityParallax }}
-        className="relative z-10 w-full max-w-xl mx-auto px-4 text-center text-[#FDFBF7]"
+        className="relative z-10 w-full max-w-3xl mx-auto px-4 text-center text-[#FDFBF7]"
       >
         {/* Save The Date Pill */}
         <motion.div
@@ -54,16 +54,20 @@ export const Hero: React.FC = () => {
           <Heart className="w-3.5 h-3.5 text-[#F3E198] fill-[#F3E198]" />
         </motion.div>
 
-        {/* Couple Names */}
+        {/* Couple Names - Auto-fitting & Resilient Typography */}
         <motion.h1
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.4 }}
-          className="text-4xl sm:text-6xl md:text-7xl font-wedding-display leading-tight py-2 drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]"
+          className={`w-full max-w-3xl mx-auto px-2 text-center drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] leading-tight py-2 ${
+            language === 'ml'
+              ? 'font-malayalam-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-normal'
+              : 'font-wedding-display text-4xl sm:text-6xl md:text-7xl font-bold'
+          }`}
         >
-          <span>{groomName}</span>
-          <span className="block sm:inline text-3xl sm:text-5xl font-serif text-[#F3E198] mx-2">&amp;</span>
-          <span>{brideName}</span>
+          <span className="inline-block break-words">{groomName}</span>
+          <span className="inline-block text-2xl sm:text-4xl lg:text-5xl font-serif text-[#F3E198] mx-2 sm:mx-3">&amp;</span>
+          <span className="inline-block break-words">{brideName}</span>
         </motion.h1>
 
         {/* Wedding Tagline */}

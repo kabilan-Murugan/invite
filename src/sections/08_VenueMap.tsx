@@ -37,7 +37,7 @@ export const VenueMap: React.FC = () => {
 
   return (
     <section id="venue" className="py-16 sm:py-24 px-4 bg-[#FDFBF7] relative overflow-hidden">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto w-full">
         {/* Section Header */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#D4AF37] font-semibold mb-2">

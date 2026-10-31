@@ -30,7 +30,7 @@ export const InvitationMessage: React.FC = () => {
       <div className="absolute top-0 left-0 w-32 h-32 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#F4EFE6] to-transparent pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-32 h-32 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-[#F4EFE6] to-transparent pointer-events-none" />
 
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-3xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

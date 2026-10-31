@@ -263,7 +263,7 @@ export const Gallery: React.FC = () => {
           <div className="relative py-4 sm:py-6">
             {/* 3D Perspective Stage Container with Full Touch Swipe Gestures */}
             <div
-              className="relative w-full h-[400px] sm:h-[490px] flex items-center justify-center overflow-visible touch-pan-y"
+              className="relative w-full h-[400px] sm:h-[490px] flex items-center justify-center overflow-hidden touch-pan-y"
               style={{
                 perspective: '1200px',
                 transformStyle: 'preserve-3d',

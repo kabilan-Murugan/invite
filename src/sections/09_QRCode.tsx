@@ -51,17 +51,17 @@ export const QRCodeSection: React.FC<QRCodeSectionProps> = ({ onOpenPrintable })
 
   return (
     <section id="qr" className="py-16 sm:py-24 px-4 bg-[#FDFBF7] relative overflow-hidden">
-      <div className="max-w-xl mx-auto text-center">
+      <div className="max-w-2xl mx-auto text-center w-full">
         {/* Section Header */}
         <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#D4AF37] font-semibold mb-2">
           <QrCode className="w-3.5 h-3.5" />
           <span>{t.qr.heading}</span>
           <QrCode className="w-3.5 h-3.5" />
         </div>
-        <h2 className="text-3xl sm:text-4xl font-wedding-serif font-bold text-[#0F4336]">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-wedding-serif font-bold text-[#0F4336] leading-snug sm:leading-normal max-w-xl mx-auto">
           {t.qr.subheading}
         </h2>
-        <p className="text-xs sm:text-sm text-stone-600 font-light mt-2 max-w-sm mx-auto">
+        <p className="text-xs sm:text-sm text-stone-600 font-light mt-2 max-w-md mx-auto">
           {t.qr.scanPrompt}
         </p>
 

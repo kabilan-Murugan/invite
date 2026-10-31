@@ -7,7 +7,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className="fixed top-3 left-0 right-0 z-40 px-3 sm:px-6 pointer-events-none">
-      <div className="max-w-4xl mx-auto flex items-center justify-between pointer-events-auto">
+      <div className="max-w-5xl xl:max-w-6xl mx-auto flex items-center justify-between pointer-events-auto">
         {/* Monogram / Brand */}
         <a
           href="#hero"

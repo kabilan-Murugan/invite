@@ -42,7 +42,7 @@ export const EventDetails: React.FC = () => {
 
   return (
     <section id="events" className="py-16 sm:py-24 px-4 bg-[#FDFBF7] relative overflow-hidden">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto w-full">
         {/* Section Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#D4AF37] font-semibold mb-2">
@@ -59,8 +59,8 @@ export const EventDetails: React.FC = () => {
           <GoldDivider variant="lotus" />
         </div>
 
-        {/* Event Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Event Cards Grid - Auto-fits elegantly across mobile, tablet & desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {wedding.events.map((event, index) => {
             const title = language === 'ml' ? event.titleMl : event.titleEn;
             const tagline = language === 'ml' ? event.taglineMl : event.taglineEn;
@@ -80,15 +80,15 @@ export const EventDetails: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
-                className={`relative rounded-3xl p-6 flex flex-col justify-between shadow-lg transition-all hover:shadow-xl ${
+                className={`relative rounded-3xl p-5 sm:p-6 flex flex-col justify-between shadow-lg transition-all hover:shadow-xl w-full box-border ${
                   isMuhurtham
-                    ? 'bg-gradient-to-b from-[#FFFEFA] to-[#F4EFE6] border-2 border-[#D4AF37] ring-2 ring-[#D4AF37]/20'
+                    ? 'bg-gradient-to-b from-[#FFFEFA] to-[#F4EFE6] border-2 border-[#D4AF37] ring-2 ring-[#D4AF37]/20 md:col-span-2 lg:col-span-1'
                     : 'glass-card border border-[#D4AF37]/30'
                 }`}
               >
                 {/* Most Auspicious Crown Badge */}
                 {isMuhurtham && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#E6C86E] via-[#D4AF37] to-[#B68E1B] text-[#0A2B23] text-[10px] font-bold uppercase tracking-widest shadow-md">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#E6C86E] via-[#D4AF37] to-[#B68E1B] text-[#0A2B23] text-[10px] font-bold uppercase tracking-widest shadow-md whitespace-nowrap z-20">
                     {language === 'ml' ? '★ താലികെട്ട് മുഹൂർത്തം' : '★ Auspicious Muhurtham'}
                   </div>
                 )}

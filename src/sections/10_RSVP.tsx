@@ -84,7 +84,7 @@ export const RSVP: React.FC = () => {
 
   return (
     <section id="rsvp" className="py-16 sm:py-24 px-4 bg-[#FDFBF7] relative overflow-hidden">
-      <div className="max-w-xl mx-auto">
+      <div className="max-w-2xl mx-auto w-full">
         {/* Section Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#D4AF37] font-semibold mb-2">

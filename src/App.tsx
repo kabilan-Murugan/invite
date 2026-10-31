@@ -106,7 +106,7 @@ const MainWeddingContent: React.FC = () => {
       <Splash />
 
       {/* Desktop Wrapper: Centers content in phone-first reading column or responsive two-column */}
-      <main className="w-full max-w-4xl mx-auto shadow-2xl shadow-[#6B1E2E]/10 bg-[#FFF8F0] min-h-screen">
+      <main className="w-full max-w-5xl xl:max-w-6xl mx-auto shadow-2xl shadow-[#0F4336]/10 bg-[#FFF8F0] min-h-screen transition-all">
         {/* Section 2: Hero */}
         <Hero />
 
