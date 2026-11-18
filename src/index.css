@@ -164,6 +164,198 @@ body {
   }
 }
 
+/* ===== LUXURY WAX SEAL ENVELOPE ENTRANCE ===== */
+.wax-entrance {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  background: #181410;
+  perspective: 1600px;
+}
+
+.wax-envelope-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .wax-envelope-wrapper {
+    max-width: 520px;
+    height: 100%;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+  }
+}
+
+.wax-letter-base {
+  position: absolute;
+  inset: 0;
+  background: url("/photos/clean-wax-entrance.jpg") center center/cover no-repeat;
+  will-change: transform, opacity, filter;
+}
+
+.reference-top-slide {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  background: url("/photos/clean-wax-entrance.jpg") center center/cover no-repeat;
+  clip-path: polygon(0 0, 100% 0, 50% 58%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 50% 58%);
+  pointer-events: none;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.reference-bottom-slide {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  background: url("/photos/clean-wax-entrance.jpg") center center/cover no-repeat;
+  clip-path: polygon(0 54%, 50% 64%, 100% 54%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 54%, 50% 64%, 100% 54%, 100% 100%, 0 100%);
+  pointer-events: none;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* Tight blinking gold halo around the wax seal stamp */
+.wax-touch-btn {
+  position: absolute;
+  z-index: 30;
+  left: 50%;
+  top: 66.6%;
+  width: clamp(110px, 19vh, 185px);
+  height: clamp(110px, 19vh, 185px);
+  transform: translate(-50%, -50%);
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wax-touch-btn::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle at center,
+    rgba(255, 239, 180, 0.28) 0%,
+    rgba(246, 202, 104, 0.38) 35%,
+    rgba(211, 157, 45, 0.28) 55%,
+    rgba(177, 113, 17, 0) 76%);
+  filter: blur(7px);
+  opacity: 0.65;
+  transform: scale(0.92);
+  animation: exactWaxGoldBlink 2s ease-in-out infinite;
+}
+
+@keyframes exactWaxGoldBlink {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.92);
+    filter: blur(7px);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.08);
+    filter: blur(10px);
+  }
+}
+
+.wax-touch-label {
+  display: block;
+  position: absolute;
+  z-index: 25;
+  left: 50%;
+  top: 80.3%;
+  transform: translate(-50%, -50%);
+  width: 94vw;
+  max-width: 520px;
+  color: #3a2a18;
+  font-family: var(--font-serif);
+  font-size: clamp(15px, 4.2vw, 22px);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: 0 1px 1px rgba(255, 247, 220, 0.95);
+  animation: waxLabelGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes waxLabelGlow {
+  0%, 100% {
+    opacity: 0.85;
+    filter: drop-shadow(0 2px 4px rgba(94, 58, 5, 0.2));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.5));
+  }
+}
+
+/* Opening Animations */
+.wax-entrance.opening .reference-top-slide {
+  animation: exactTopPanelUp 2.05s cubic-bezier(0.22, 0.75, 0.16, 1) forwards !important;
+}
+
+.wax-entrance.opening .reference-bottom-slide {
+  animation: exactBottomPanelDown 2.05s cubic-bezier(0.22, 0.75, 0.16, 1) forwards !important;
+}
+
+.wax-entrance.opening .wax-touch-btn {
+  animation: exactSealOpenFinal 1.9s cubic-bezier(0.22, 0.75, 0.16, 1) forwards !important;
+}
+
+.wax-entrance.opening .wax-touch-label {
+  animation: exactLabelOpenFinal 1.9s cubic-bezier(0.22, 0.75, 0.16, 1) forwards !important;
+}
+
+.wax-entrance.opening .wreath-monogram {
+  animation: exactMonogramUp 1.9s cubic-bezier(0.22, 0.75, 0.16, 1) forwards !important;
+}
+
+.wax-entrance.opening {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.65s ease 2.05s, visibility 0.65s ease 2.05s !important;
+}
+
+@keyframes exactTopPanelUp {
+  0% { transform: translate3d(0, 0, 0); opacity: 1; }
+  16% { transform: translate3d(0, -1%, 0); opacity: 1; }
+  62% { transform: translate3d(0, -58%, 0); opacity: 0.98; }
+  100% { transform: translate3d(0, -118%, 0); opacity: 0; }
+}
+
+@keyframes exactBottomPanelDown {
+  0% { transform: translate3d(0, 0, 0); opacity: 1; }
+  16% { transform: translate3d(0, 1%, 0); opacity: 1; }
+  62% { transform: translate3d(0, 45%, 0); opacity: 0.98; }
+  100% { transform: translate3d(0, 112%, 0); opacity: 0; }
+}
+
+@keyframes exactSealOpenFinal {
+  to { transform: translate(-50%, calc(-50% + 140vh)) scale(0.88) !important; opacity: 0; }
+}
+
+@keyframes exactLabelOpenFinal {
+  to { transform: translate(-50%, calc(-50% + 140vh)) !important; opacity: 0; }
+}
+
+@keyframes exactMonogramUp {
+  to { transform: translate(-50%, -120vh) !important; opacity: 0; }
+}
+
 /* Print CSS for printable A5 invitation card */
 @media print {
   body {
