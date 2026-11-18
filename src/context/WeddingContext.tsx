@@ -21,7 +21,7 @@ interface WeddingContextType {
 
 const WeddingContext = createContext<WeddingContextType | undefined>(undefined);
 
-const STORAGE_KEY_CONFIG = 'wedding_custom_config_v2';
+const STORAGE_KEY_CONFIG = 'wedding_custom_config_v3';
 const STORAGE_KEY_LANG = 'wedding_lang_v2';
 
 export const WeddingProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {

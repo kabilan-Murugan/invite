@@ -70,8 +70,8 @@ export const Countdown: React.FC = () => {
           alt="Couple holding hands"
           className="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-[0.22] scale-105"
         />
-        {/* Soft Vignette Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0806]/90 via-black/60 to-[#0a0806]/95" />
+        {/* Soft Dusky Romantic Vignette Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1c0d13]/90 via-[#12080d]/75 to-[#1c0d13]/95" />
       </div>
 
       <div className="max-w-xl mx-auto text-center relative z-10 w-full">

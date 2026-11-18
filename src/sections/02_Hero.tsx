@@ -30,9 +30,9 @@ export const Hero: React.FC = () => {
           className="w-full h-full"
           imgClassName="w-full h-full object-cover object-center filter brightness-[0.85] saturate-[1.1]"
         />
-        {/* Royal Emerald & Sandalwood Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A2B23] via-[#0F4336]/60 to-black/35" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_transparent_50%,_rgba(10,43,35,0.85)_100%)]" />
+        {/* Dynamic Theme Gradients */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--theme-primary-dark)] via-[var(--theme-primary)]/60 to-black/35" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_transparent_50%,_rgba(var(--theme-primary-dark-rgb),0.88)_100%)]" />
       </motion.div>
 
       {/* Foreground Content Card */}
@@ -73,7 +73,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-sm sm:text-base text-emerald-100 font-light tracking-wide mt-2 mb-6"
+          className="text-sm sm:text-base text-stone-100 font-light tracking-wide mt-2 mb-6"
         >
           {t.hero.gettingMarried}
         </motion.p>
@@ -83,7 +83,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="p-3.5 sm:p-4 rounded-2xl glass-card-emerald max-w-md mx-auto shadow-2xl flex flex-col sm:flex-row items-center justify-around gap-3 text-xs sm:text-sm text-emerald-50 cursor-pointer"
+          className="p-3.5 sm:p-4 rounded-2xl glass-card-emerald max-w-md mx-auto shadow-2xl flex flex-col sm:flex-row items-center justify-around gap-3 text-xs sm:text-sm text-white/95 cursor-pointer"
           onClick={() => {
             const el = document.getElementById('remember-date') || document.getElementById('countdown');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -107,7 +107,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="mt-8 flex flex-col items-center justify-center text-emerald-200/80 text-[11px] uppercase tracking-widest gap-1"
+          className="mt-8 flex flex-col items-center justify-center text-stone-200/80 text-[11px] uppercase tracking-widest gap-1"
         >
           <span>{t.hero.scrollDown}</span>
           <ChevronDown className="w-4 h-4 text-[#F3E198] animate-bounce" />

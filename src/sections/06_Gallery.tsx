@@ -249,7 +249,7 @@ export const Gallery: React.FC = () => {
                   </>
                 )}
                 {isAutoPlaying && !isHovered && (
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping ml-0.5" />
+                  <span className="w-2 h-2 rounded-full bg-[var(--theme-primary)] animate-ping ml-0.5" />
                 )}
               </button>
             )}
@@ -374,7 +374,7 @@ export const Gallery: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
 
                     {/* Top Corner Pill: Frame Counter */}
-                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md text-[10px] text-emerald-100/90 font-mono border border-white/20">
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md text-[10px] text-stone-100/90 font-mono border border-white/20">
                       {index + 1} / {filteredPhotos.length}
                     </div>
 
@@ -393,7 +393,7 @@ export const Gallery: React.FC = () => {
                         <motion.div
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="mt-2 pt-2 border-t border-white/20 flex items-center justify-between text-xs text-emerald-100/90"
+                          className="mt-2 pt-2 border-t border-white/20 flex items-center justify-between text-xs text-stone-100/90"
                         >
                           <span className="text-[11px] font-light truncate max-w-[200px]">
                             {language === 'ml' ? photo.taglineMl : photo.taglineEn}
@@ -500,7 +500,7 @@ export const Gallery: React.FC = () => {
                     <p className="text-xs font-serif font-bold text-[#F3E198]">
                       {language === 'ml' ? photo.titleMl : photo.titleEn}
                     </p>
-                    <p className="text-[10px] text-emerald-100/80 font-light truncate">
+                    <p className="text-[10px] text-stone-200/80 font-light truncate">
                       {language === 'ml' ? photo.locationMl : photo.locationEn}
                     </p>
                   </div>

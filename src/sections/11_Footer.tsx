@@ -22,9 +22,9 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="pt-16 pb-28 md:pb-16 px-4 bg-[#0A2B23] text-[#FDFBF7] relative overflow-hidden">
+    <footer id="contact" className="pt-16 pb-28 md:pb-16 px-4 bg-[var(--theme-primary-dark)] text-[#FDFBF7] relative overflow-hidden">
       {/* Background Radial Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#0F4336]/60 via-[#0A2B23] to-[#04130F]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[var(--theme-primary)]/60 via-[var(--theme-primary-dark)] to-[#15050A]" />
 
       <div className="max-w-5xl mx-auto w-full relative z-10">
         {/* Section Heading */}
@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
               <h3 className="text-lg font-serif font-bold text-white mt-1">
                 {groomSide.name}
               </h3>
-              <p className="text-xs text-emerald-100/70 mt-0.5">{groomSide.phone}</p>
+              <p className="text-xs text-stone-200/80 mt-0.5">{groomSide.phone}</p>
             </div>
 
             <div className="grid grid-cols-2 gap-2 mt-5">
@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
                 href={buildDirectContactWhatsAppUrl(groomSide.whatsapp, `Hello! Regarding the wedding celebrations of ${wedding.couple.groom.nameEn} & ${wedding.couple.bride.nameEn}`)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold active:scale-95 transition-all shadow-md text-center"
+                className="flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-semibold active:scale-95 transition-all shadow-md text-center"
               >
                 <MessageCircle className="w-3.5 h-3.5" />
                 <span>WhatsApp</span>
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
               <h3 className="text-lg font-serif font-bold text-white mt-1">
                 {brideSide.name}
               </h3>
-              <p className="text-xs text-emerald-100/70 mt-0.5">{brideSide.phone}</p>
+              <p className="text-xs text-stone-200/80 mt-0.5">{brideSide.phone}</p>
             </div>
 
             <div className="grid grid-cols-2 gap-2 mt-5">
@@ -100,7 +100,7 @@ export const Footer: React.FC = () => {
                 href={buildDirectContactWhatsAppUrl(brideSide.whatsapp, `Hello! Regarding the wedding celebrations of ${wedding.couple.groom.nameEn} & ${wedding.couple.bride.nameEn}`)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold active:scale-95 transition-all shadow-md text-center"
+                className="flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-semibold active:scale-95 transition-all shadow-md text-center"
               >
                 <MessageCircle className="w-3.5 h-3.5" />
                 <span>WhatsApp</span>
@@ -118,19 +118,19 @@ export const Footer: React.FC = () => {
           >
             <span>{wedding.hashtag}</span>
             {hashtagCopied ? (
-              <Check className="w-4 h-4 text-emerald-400" />
+              <Check className="w-4 h-4 text-[#F3E198]" />
             ) : (
-              <Copy className="w-4 h-4 text-emerald-200/80" />
+              <Copy className="w-4 h-4 text-[#F3E198]/80" />
             )}
           </button>
-          <p className="text-[11px] text-emerald-100/60 mt-2">
+          <p className="text-[11px] text-stone-300/70 mt-2">
             {hashtagCopied ? t.contact.hashtagCopied : t.contact.copyHashtag}
           </p>
         </div>
 
         {/* With Love & Copyright Footer */}
-        <div className="border-t border-[#F3E198]/20 pt-8 text-center text-xs text-emerald-100/60 space-y-2">
-          <p className="font-serif italic text-sm text-emerald-100/90">
+        <div className="border-t border-[#F3E198]/20 pt-8 text-center text-xs text-stone-300/70 space-y-2">
+          <p className="font-serif italic text-sm text-stone-100">
             {t.contact.withLove}
           </p>
           <p className="text-[11px] font-light">

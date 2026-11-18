@@ -138,10 +138,10 @@ export const Splash: React.FC = () => {
 
             {/* Venue & Invitation Badge (Date & Timings hidden as requested) */}
             <div className="card-footer-block">
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#f6efe1] border border-[#d4af37]/40 text-[#0F4336] text-[11px] sm:text-[12px] font-semibold uppercase tracking-wider mb-2 shadow-sm">
-                <span className="text-[#d4af37]">✦</span>
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[var(--theme-card-bg)] border border-[var(--theme-gold)]/40 text-[var(--theme-primary)] text-[11px] sm:text-[12px] font-semibold uppercase tracking-wider mb-2 shadow-sm">
+                <span className="text-[var(--theme-gold)]">✦</span>
                 <span>{isMalayalam ? 'വിവാഹ ക്ഷണക്കത്ത്' : 'WEDDING INVITATION'}</span>
-                <span className="text-[#d4af37]">✦</span>
+                <span className="text-[var(--theme-gold)]">✦</span>
               </div>
               <div className={`card-venue ${isMalayalam ? 'font-malayalam-body text-[12px]' : ''}`}>
                 {venueTitle}

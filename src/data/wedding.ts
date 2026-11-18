@@ -44,7 +44,7 @@ export interface GalleryPhotoItem {
 }
 
 export interface ThemeConfig {
-  presetId: 'emerald' | 'maroon' | 'rose' | 'sapphire' | 'plum' | 'terracotta' | 'custom';
+  presetId: 'dusky-pink' | 'emerald' | 'maroon' | 'rose' | 'sapphire' | 'plum' | 'terracotta' | 'custom';
   name: string;
   primary: string;         // Main brand color (e.g. #0F4336)
   primaryDark: string;     // Deep header / gradient start (e.g. #0A2B23)
@@ -59,6 +59,20 @@ export interface ThemeConfig {
 }
 
 export const THEME_PRESETS: Record<string, ThemeConfig> = {
+  'dusky-pink': {
+    presetId: 'dusky-pink',
+    name: 'Romantic Dusky Pink & Rose Gold',
+    primary: '#8C3B55',
+    primaryDark: '#581C2E',
+    primaryLight: '#BA6882',
+    gold: '#C28B62',
+    goldLight: '#FCE6D8',
+    goldDark: '#8C5732',
+    background: '#FDF8F9',
+    cardBg: '#F9EFF2',
+    text: '#28161D',
+    textMuted: '#684C56',
+  },
   emerald: {
     presetId: 'emerald',
     name: 'Royal Kerala Emerald & Kasavu Gold',
@@ -264,7 +278,7 @@ export interface WeddingConfig {
 
 export const weddingData: WeddingConfig = {
   adminPassword: 'wedding2026',
-  theme: THEME_PRESETS.emerald,
+  theme: THEME_PRESETS['dusky-pink'],
   couple: {
     groom: {
       nameEn: 'Karthik',

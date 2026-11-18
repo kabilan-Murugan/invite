@@ -34,7 +34,7 @@ export const BottomNav: React.FC = () => {
         {/* Events / Schedule */}
         <a
           href="#events"
-          className="flex flex-col items-center justify-center min-h-[44px] min-w-[56px] px-2 py-1 text-emerald-100 hover:text-[#F3E198] active:scale-95 transition-all text-center"
+          className="flex flex-col items-center justify-center min-h-[44px] min-w-[56px] px-2 py-1 text-stone-100 hover:text-[#F3E198] active:scale-95 transition-all text-center"
         >
           <Calendar className="w-4 h-4 text-[#F3E198] mb-0.5" />
           <span className="text-[10px] font-medium leading-tight">{t.bottomNav.events}</span>
@@ -43,7 +43,7 @@ export const BottomNav: React.FC = () => {
         {/* Venue / Map */}
         <a
           href="#venue"
-          className="flex flex-col items-center justify-center min-h-[44px] min-w-[56px] px-2 py-1 text-emerald-100 hover:text-[#F3E198] active:scale-95 transition-all text-center"
+          className="flex flex-col items-center justify-center min-h-[44px] min-w-[56px] px-2 py-1 text-stone-100 hover:text-[#F3E198] active:scale-95 transition-all text-center"
         >
           <MapPin className="w-4 h-4 text-[#F3E198] mb-0.5" />
           <span className="text-[10px] font-medium leading-tight">{t.bottomNav.venue}</span>
@@ -52,9 +52,9 @@ export const BottomNav: React.FC = () => {
         {/* RSVP (Primary Accent) */}
         <a
           href="#rsvp"
-          className="flex flex-col items-center justify-center min-h-[44px] min-w-[64px] px-3 py-1 bg-gradient-to-r from-[#E6C86E] via-[#D4AF37] to-[#B68E1B] text-[#0A2B23] font-bold rounded-xl shadow-md active:scale-95 transition-all text-center"
+          className="flex flex-col items-center justify-center min-h-[44px] min-w-[64px] px-3 py-1 bg-gradient-to-r from-[var(--theme-gold-light)] via-[var(--theme-gold)] to-[var(--theme-gold-dark)] text-white font-bold rounded-xl shadow-md active:scale-95 transition-all text-center"
         >
-          <HeartHandshake className="w-4 h-4 text-[#0A2B23] mb-0.5" />
+          <HeartHandshake className="w-4 h-4 text-white mb-0.5" />
           <span className="text-[10px] uppercase tracking-wider">{t.bottomNav.rsvp}</span>
         </a>
 
@@ -62,13 +62,13 @@ export const BottomNav: React.FC = () => {
         <button
           type="button"
           onClick={handleShare}
-          className="flex flex-col items-center justify-center min-h-[44px] min-w-[56px] px-2 py-1 text-emerald-100 hover:text-[#F3E198] active:scale-95 transition-all text-center cursor-pointer"
+          className="flex flex-col items-center justify-center min-h-[44px] min-w-[56px] px-2 py-1 text-stone-100 hover:text-[#F3E198] active:scale-95 transition-all text-center cursor-pointer"
           aria-label={t.bottomNav.share}
         >
           {copied ? (
             <>
-              <Check className="w-4 h-4 text-emerald-300 mb-0.5 animate-bounce" />
-              <span className="text-[10px] font-medium text-emerald-200">Copied!</span>
+              <Check className="w-4 h-4 text-[var(--theme-gold-light)] mb-0.5 animate-bounce" />
+              <span className="text-[10px] font-medium text-white">Copied!</span>
             </>
           ) : (
             <>

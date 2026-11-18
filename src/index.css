@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --theme-primary: #0F4336;
-  --theme-primary-dark: #0A2B23;
-  --theme-primary-light: #1A5E4C;
-  --theme-gold: #D4AF37;
-  --theme-gold-light: #F3E198;
-  --theme-gold-dark: #987413;
-  --theme-bg: #FDFBF7;
-  --theme-bg-light: #FFFEFA;
-  --theme-card-bg: #F4EFE6;
-  --theme-card-dark: #E8DFC8;
-  --theme-text: #1E2723;
-  --theme-text-muted: #4B5A53;
+  --theme-primary: #8C3B55;
+  --theme-primary-dark: #581C2E;
+  --theme-primary-light: #BA6882;
+  --theme-gold: #C28B62;
+  --theme-gold-light: #FCE6D8;
+  --theme-gold-dark: #8C5732;
+  --theme-bg: #FDF8F9;
+  --theme-bg-light: #FFFDFD;
+  --theme-card-bg: #F9EFF2;
+  --theme-card-dark: #EDD6DC;
+  --theme-text: #28161D;
+  --theme-text-muted: #684C56;
 
-  --theme-primary-rgb: 15, 67, 54;
-  --theme-primary-dark-rgb: 10, 43, 35;
-  --theme-gold-rgb: 212, 175, 55;
-  --theme-gold-light-rgb: 243, 225, 152;
-  --theme-bg-rgb: 253, 251, 247;
+  --theme-primary-rgb: 140, 59, 85;
+  --theme-primary-dark-rgb: 88, 28, 46;
+  --theme-gold-rgb: 194, 139, 98;
+  --theme-gold-light-rgb: 252, 230, 216;
+  --theme-bg-rgb: 253, 248, 249;
 }
 
 @theme {
@@ -170,7 +170,7 @@ body {
   inset: 0;
   z-index: 100;
   overflow: hidden;
-  background: #14100b;
+  background: radial-gradient(circle at center, #2e1721 0%, #15090e 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -405,11 +405,11 @@ body {
 .monogram-text {
   font-family: var(--font-script);
   font-size: clamp(48px, 12vw, 65px);
-  color: #463120;
+  color: #4a2130;
   font-weight: bold;
   font-style: italic;
   letter-spacing: -0.02em;
-  text-shadow: 0 1px 2px rgba(255, 245, 225, 0.9);
+  text-shadow: 0 1px 2px rgba(255, 240, 245, 0.9);
 }
 
 /* 6. Authentic Wax Seal Stamp */

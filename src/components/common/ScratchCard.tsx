@@ -212,18 +212,18 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
         style={{ touchAction: 'none' }}
       >
         {/* UNDERNEATH LAYER: The Revealed Wedding Date */}
-        <div className="absolute inset-0 p-4 sm:p-5 flex flex-col items-center justify-center text-center bg-gradient-to-b from-[#FFFDF9] via-[#FAF5E9] to-[#F3EAD5]">
-          <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-[#8C680A] uppercase tracking-widest mb-1">
-            <Sparkles className="w-3 h-3 text-[#D4AF37]" />
+        <div className="absolute inset-0 p-4 sm:p-5 flex flex-col items-center justify-center text-center bg-gradient-to-b from-[#FFFDFD] via-[#FDF5F7] to-[#F7E7EC]">
+          <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold text-[var(--theme-gold-dark)] uppercase tracking-widest mb-1">
+            <Sparkles className="w-3 h-3 text-[var(--theme-gold)]" />
             <span>{isMalayalam ? 'വിവാഹ തീയതി' : 'WEDDING DATE'}</span>
-            <Sparkles className="w-3 h-3 text-[#D4AF37]" />
+            <Sparkles className="w-3 h-3 text-[var(--theme-gold)]" />
           </div>
 
-          <div className="text-xl sm:text-2xl font-serif font-bold text-[#0F4336] leading-snug drop-shadow-sm">
+          <div className="text-xl sm:text-2xl font-serif font-bold text-[var(--theme-primary-dark)] leading-snug drop-shadow-sm">
             {dateText}
           </div>
 
-          <div className="text-xs sm:text-sm font-semibold text-[#8C680A] mt-0.5">
+          <div className="text-xs sm:text-sm font-semibold text-[var(--theme-gold-dark)] mt-0.5">
             {dayText} • {muhurthamText}
           </div>
 
@@ -231,8 +231,8 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
             📍 {venueText}
           </div>
 
-          <div className="mt-2 flex items-center gap-1 text-[10px] font-semibold text-[#0F4336] bg-emerald-100/60 px-2 py-0.5 rounded-full">
-            <Check className="w-3 h-3 text-emerald-600" />
+          <div className="mt-2 flex items-center gap-1 text-[10px] font-semibold text-[var(--theme-primary-dark)] bg-[var(--theme-primary)]/15 px-2 py-0.5 rounded-full">
+            <Check className="w-3 h-3 text-[var(--theme-primary)]" />
             <span>{isMalayalam ? 'തീയതി വെളിപ്പെടുത്തി!' : 'Date Revealed!'}</span>
           </div>
         </div>

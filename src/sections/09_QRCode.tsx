@@ -84,7 +84,7 @@ export const QRCodeSection: React.FC<QRCodeSectionProps> = ({ onOpenPrintable })
               value={siteUrl}
               size={200}
               level="H"
-              fgColor="#0F4336"
+              fgColor={wedding.theme?.primary || '#8C3B55'}
               bgColor="#FFFFFF"
               imageSettings={{
                 src: '/favicon.svg',

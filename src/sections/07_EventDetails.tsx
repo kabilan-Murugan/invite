@@ -75,18 +75,18 @@ export const EventDetails: React.FC = () => {
   };
 
   return (
-    <section id="events" className="py-20 sm:py-28 px-4 bg-[#11100e] text-[#FDFBF7] relative overflow-hidden">
+    <section id="events" className="py-20 sm:py-28 px-4 bg-gradient-to-b from-[#FDF8F9] via-[#F9EFF2] to-[#FDF8F9] text-[var(--theme-text)] relative overflow-hidden">
       {/* Ambient background glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,175,55,0.08)_0%,_transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(140,59,85,0.08)_0%,_transparent_70%)] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto w-full relative z-10">
         {/* Section Header Matching Reference */}
         <div className="text-center mb-14 sm:mb-16">
-          <div className="text-[10.5px] sm:text-xs uppercase tracking-[0.28em] text-[#d4af37] font-semibold mb-3">
+          <div className="text-[10.5px] sm:text-xs uppercase tracking-[0.28em] text-[var(--theme-gold-dark)] font-bold mb-3">
             {eventCountWord()}
           </div>
           <h2
-            className={`text-4xl sm:text-5xl lg:text-6xl text-white font-normal italic tracking-wide drop-shadow-md ${
+            className={`text-4xl sm:text-5xl lg:text-6xl text-[var(--theme-primary-dark)] font-normal italic tracking-wide drop-shadow-sm ${
               isMalayalam ? 'font-malayalam-display not-italic font-bold text-3xl sm:text-4xl' : 'font-wedding-serif'
             }`}
           >
@@ -122,15 +122,15 @@ export const EventDetails: React.FC = () => {
                 </div>
 
                 {/* 2. White / Cream Calendar Sheet */}
-                <div className="relative rounded-[28px] bg-[#f9f8f5] text-[#1c1c1c] p-6 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.45)] border border-stone-200/80 flex flex-col justify-between min-h-[460px]">
+                <div className="relative rounded-[28px] bg-white text-[#1c1c1c] p-6 sm:p-7 shadow-[0_20px_45px_rgba(140,59,85,0.12)] border border-[var(--theme-primary)]/15 flex flex-col justify-between min-h-[460px]">
                   {/* Punch Holes for the binder clips */}
-                  <div className="absolute top-4 left-[22%] -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-stone-300 shadow-inner z-10" />
-                  <div className="absolute top-4 right-[22%] translate-x-1/2 w-2.5 h-2.5 rounded-full bg-stone-300 shadow-inner z-10" />
+                  <div className="absolute top-4 left-[22%] -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-stone-200 shadow-inner z-10" />
+                  <div className="absolute top-4 right-[22%] translate-x-1/2 w-2.5 h-2.5 rounded-full bg-stone-200 shadow-inner z-10" />
 
                   <div>
                     {/* Event Category Tag */}
                     <div className="text-center pt-3 pb-4">
-                      <span className="text-[11px] sm:text-[12px] font-serif font-semibold tracking-[0.22em] text-stone-500 uppercase">
+                      <span className="text-[11px] sm:text-[12px] font-serif font-semibold tracking-[0.22em] text-[var(--theme-gold-dark)] uppercase">
                         {category}
                       </span>
                     </div>
@@ -138,13 +138,13 @@ export const EventDetails: React.FC = () => {
                     {/* Big Calendar Date Layout Matching Reference */}
                     <div className="flex items-center justify-center gap-4 py-3 border-b border-stone-200/60 mb-4">
                       {/* Big Bold Day Number */}
-                      <span className="font-serif text-5xl sm:text-6xl font-bold text-[#181818] tracking-tight">
+                      <span className="font-serif text-5xl sm:text-6xl font-bold text-[var(--theme-primary-dark)] tracking-tight">
                         {dayNum}
                       </span>
 
                       {/* Month & Year/Weekday */}
                       <div className="flex flex-col text-left">
-                        <span className="font-serif text-xl sm:text-2xl font-bold tracking-wider text-[#181818] uppercase leading-none">
+                        <span className="font-serif text-xl sm:text-2xl font-bold tracking-wider text-[var(--theme-primary)] uppercase leading-none">
                           {month}
                         </span>
                         <span className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider mt-1">
@@ -155,7 +155,7 @@ export const EventDetails: React.FC = () => {
 
                     {/* Time */}
                     <div className="text-center mb-4">
-                      <span className="text-xs sm:text-sm font-medium text-stone-700">
+                      <span className="text-xs sm:text-sm font-semibold text-[var(--theme-text-muted)]">
                         {time}
                       </span>
                     </div>
@@ -173,23 +173,23 @@ export const EventDetails: React.FC = () => {
 
                   {/* 3. Action Buttons Matching Reference: OPEN MAP & ADD TO CALENDAR */}
                   <div className="space-y-2.5 pt-4 mt-2">
-                    {/* Dark/Black Button: OPEN MAP */}
+                    {/* Primary Dark Button: OPEN MAP */}
                     <a
                       href={event.mapLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-3.5 px-4 rounded-xl bg-[#181818] hover:bg-black text-white text-[11px] sm:text-xs font-semibold uppercase tracking-[0.14em] flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all active:scale-98"
+                      className="w-full py-3.5 px-4 rounded-xl bg-[var(--theme-primary-dark)] hover:bg-[var(--theme-primary)] text-white text-[11px] sm:text-xs font-semibold uppercase tracking-[0.14em] flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all active:scale-98"
                     >
-                      <Navigation className="w-3.5 h-3.5 text-[#F3E198]" />
+                      <Navigation className="w-3.5 h-3.5 text-[var(--theme-gold-light)]" />
                       <span>{isMalayalam ? 'മാപ്പിൽ കാണുക' : 'OPEN MAP'}</span>
                     </a>
 
-                    {/* Gold/Bronze Button: ADD TO CALENDAR */}
+                    {/* Rose Gold/Bronze Button: ADD TO CALENDAR */}
                     <a
                       href={googleCalUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-3.5 px-4 rounded-xl bg-[#b38728] hover:bg-[#9e741e] text-white text-[11px] sm:text-xs font-semibold uppercase tracking-[0.14em] flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all active:scale-98"
+                      className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[var(--theme-gold)] to-[var(--theme-gold-dark)] hover:opacity-95 text-white text-[11px] sm:text-xs font-semibold uppercase tracking-[0.14em] flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all active:scale-98"
                     >
                       <Calendar className="w-3.5 h-3.5 text-white" />
                       <span>{isMalayalam ? 'കലണ്ടറിൽ ചേർക്കുക' : 'ADD TO CALENDAR'}</span>
