@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Calendar, MapPin, ChevronDown, Heart } from 'lucide-react';
+import { MapPin, Heart, Sparkles, ChevronDown } from 'lucide-react';
 import { useWedding } from '../context/WeddingContext';
 import { ResponsiveWeddingImage } from '../components/common/ResponsiveWeddingImage';
 import { useReducedMotion } from '../hooks/useReducedMotion';
@@ -15,8 +15,6 @@ export const Hero: React.FC = () => {
 
   const groomName = language === 'ml' ? wedding.couple.groom.nameMl : wedding.couple.groom.nameEn;
   const brideName = language === 'ml' ? wedding.couple.bride.nameMl : wedding.couple.bride.nameEn;
-  const muhurthamEvent = wedding.events.find(e => e.key === 'muhurtham') || wedding.events[2];
-  const dateFormatted = language === 'ml' ? muhurthamEvent.dateMl : muhurthamEvent.dateEn;
 
   return (
     <section id="hero" className="relative min-h-[92vh] sm:min-h-screen flex items-end justify-center overflow-hidden pb-16 pt-24">
@@ -80,16 +78,22 @@ export const Hero: React.FC = () => {
           {t.hero.gettingMarried}
         </motion.p>
 
-        {/* Date & Location Pill Card */}
+        {/* Location & Scratch Hint Pill Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="p-4 rounded-2xl glass-card-emerald max-w-md mx-auto shadow-2xl flex flex-col sm:flex-row items-center justify-around gap-3 text-xs sm:text-sm text-emerald-50"
+          className="p-3.5 sm:p-4 rounded-2xl glass-card-emerald max-w-md mx-auto shadow-2xl flex flex-col sm:flex-row items-center justify-around gap-3 text-xs sm:text-sm text-emerald-50 cursor-pointer"
+          onClick={() => {
+            const el = document.getElementById('remember-date') || document.getElementById('countdown');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
         >
-          <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-[#F3E198]" />
-            <span className="font-medium">{dateFormatted}</span>
+          <div className="flex items-center gap-2 text-[#F3E198]">
+            <Sparkles className="w-4 h-4 text-[#F3E198]" />
+            <span className="font-medium underline underline-offset-4 decoration-[#D4AF37]">
+              {language === 'ml' ? 'തീയതി ചുരണ്ടി കാണുക ↓' : 'Scratch to Reveal Date ↓'}
+            </span>
           </div>
           <div className="hidden sm:block w-[1px] h-4 bg-[#D4AF37]/40" />
           <div className="flex items-center gap-2">

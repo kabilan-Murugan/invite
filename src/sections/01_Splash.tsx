@@ -27,14 +27,7 @@ export const Splash: React.FC = () => {
   const groomName = isMalayalam ? wedding.couple.groom.nameMl : wedding.couple.groom.nameEn;
   const brideName = isMalayalam ? wedding.couple.bride.nameMl : wedding.couple.bride.nameEn;
 
-  // Primary event info (Muhurtham / Wedding ceremony)
-  const mainEvent = wedding.events.find((e) => e.key === 'muhurtham') || wedding.events[0];
-  const eventDate = isMalayalam
-    ? mainEvent?.dateMl || 'ഞായറാഴ്ച, നവംബർ 29, 2026'
-    : mainEvent?.dateEn || 'Sunday, November 29, 2026';
-  const eventTime = isMalayalam
-    ? mainEvent?.timeMl || 'രാവിലെ 09:30 - 10:45'
-    : mainEvent?.timeEn || '09:30 AM - 10:45 AM';
+  // Primary event info
   const venueTitle = isMalayalam
     ? wedding.venue.nameMl || 'ഗ്രാൻഡ് ഹയാത്ത് ബോൾഗാട്ടി, കൊച്ചി'
     : wedding.venue.nameEn || 'Grand Hyatt Bolgatty • Kochi, Kerala';
@@ -143,18 +136,15 @@ export const Splash: React.FC = () => {
                 : '"Together with our families, we cordially invite you to celebrate our sacred union of love & bliss."'}
             </div>
 
-            {/* Date Badge in Theme Colors */}
-            <div className="card-date-badge">
-              {eventDate}
-            </div>
-
-            {/* Venue & Muhurtham details */}
+            {/* Venue & Invitation Badge (Date & Timings hidden as requested) */}
             <div className="card-footer-block">
-              <div className={`card-venue ${isMalayalam ? 'font-malayalam-body' : ''}`}>
-                {venueTitle}
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#f6efe1] border border-[#d4af37]/40 text-[#0F4336] text-[11px] sm:text-[12px] font-semibold uppercase tracking-wider mb-2 shadow-sm">
+                <span className="text-[#d4af37]">✦</span>
+                <span>{isMalayalam ? 'വിവാഹ ക്ഷണക്കത്ത്' : 'WEDDING INVITATION'}</span>
+                <span className="text-[#d4af37]">✦</span>
               </div>
-              <div className="card-muhurtham-tag">
-                {isMalayalam ? `മുഹൂർത്തം: ${eventTime}` : `MUHURTHAM: ${eventTime}`}
+              <div className={`card-venue ${isMalayalam ? 'font-malayalam-body text-[12px]' : ''}`}>
+                {venueTitle}
               </div>
             </div>
           </div>
