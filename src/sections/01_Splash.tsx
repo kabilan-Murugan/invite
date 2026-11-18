@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useWedding } from '../context/WeddingContext';
+import { useReducedMotion } from '../hooks/useReducedMotion';
+
+type AnimationStage = 'closed' | 'opening' | 'card-out' | 'expanding';
 
 export const Splash: React.FC = () => {
   const { wedding, hasOpened, openInvitation, playAudio, language } = useWedding();
-  const [isOpening, setIsOpening] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
+  const [stage, setStage] = useState<AnimationStage>('closed');
+  const timerRefs = useRef<number[]>([]);
+
+  // Clear timers on unmount
+  useEffect(() => {
+    return () => {
+      timerRefs.current.forEach((id) => clearTimeout(id));
+    };
+  }, []);
 
   if (hasOpened) return null;
 
@@ -11,64 +23,182 @@ export const Splash: React.FC = () => {
   const groomInitial = (wedding.couple.groom.nameEn[0] || 'K').toUpperCase();
   const brideInitial = (wedding.couple.bride.nameEn[0] || 'A').toUpperCase();
 
-  const handleOpen = () => {
-    if (isOpening) return;
-    setIsOpening(true);
+  const isMalayalam = language === 'ml';
+  const groomName = isMalayalam ? wedding.couple.groom.nameMl : wedding.couple.groom.nameEn;
+  const brideName = isMalayalam ? wedding.couple.bride.nameMl : wedding.couple.bride.nameEn;
 
-    // Start background music immediately on user gesture
+  // Primary event info (Muhurtham / Wedding ceremony)
+  const mainEvent = wedding.events.find((e) => e.key === 'muhurtham') || wedding.events[0];
+  const eventDate = isMalayalam
+    ? mainEvent?.dateMl || 'ഞായറാഴ്ച, നവംബർ 29, 2026'
+    : mainEvent?.dateEn || 'Sunday, November 29, 2026';
+  const eventTime = isMalayalam
+    ? mainEvent?.timeMl || 'രാവിലെ 09:30 - 10:45'
+    : mainEvent?.timeEn || '09:30 AM - 10:45 AM';
+  const venueTitle = isMalayalam
+    ? wedding.venue.nameMl || 'ഗ്രാൻഡ് ഹയാത്ത് ബോൾഗാട്ടി, കൊച്ചി'
+    : wedding.venue.nameEn || 'Grand Hyatt Bolgatty • Kochi, Kerala';
+
+  const handleOpen = () => {
+    if (stage !== 'closed') return;
+
+    setStage('opening');
+
+    // Trigger music on user gesture
     try {
       playAudio();
     } catch {
-      // Audio playback fallback
+      // Audio autoplay policy fallback
     }
 
-    // Allow full smooth 2.1s flap opening animation to finish before unlocking page
-    setTimeout(() => {
+    if (prefersReducedMotion) {
       openInvitation();
-    }, 2200);
+      return;
+    }
+
+    // Step 1: Flap folds open (0ms - 550ms)
+    // Step 2: Card glides UP out of the pocket (550ms)
+    const t1 = window.setTimeout(() => {
+      setStage('card-out');
+    }, 550);
+
+    // Step 3: Card expands gently and envelope fades out (2800ms)
+    const t2 = window.setTimeout(() => {
+      setStage('expanding');
+    }, 2800);
+
+    // Step 4: Unlock page and reveal full wedding celebration (3400ms)
+    const t3 = window.setTimeout(() => {
+      openInvitation();
+    }, 3400);
+
+    timerRefs.current = [t1, t2, t3];
+  };
+
+  const accelerateFinish = () => {
+    timerRefs.current.forEach((id) => clearTimeout(id));
+    setStage('expanding');
+    const t = window.setTimeout(() => {
+      openInvitation();
+    }, 400);
+    timerRefs.current = [t];
   };
 
   return (
     <div
       id="entrance"
-      className={`wax-entrance ${isOpening ? 'opening' : ''}`}
+      className={`wax-entrance stage-${stage}`}
       role="dialog"
       aria-modal="true"
-      aria-label="Wedding Invitation Envelope"
+      aria-label={isMalayalam ? 'വിവാഹ ക്ഷണക്കത്ത് എൻവലപ്പ്' : 'Wedding Invitation Envelope'}
+      onClick={() => {
+        if (stage === 'card-out') accelerateFinish();
+      }}
     >
-      <div className="wax-envelope-wrapper">
-        {/* Underlying letter base */}
-        <div className="wax-letter-base" aria-hidden="true" />
+      <div className="wax-stage">
+        <div className="wax-envelope-wrapper">
+          {/* 1. Interior Pocket Back Wall */}
+          <div className="wax-envelope-back" aria-hidden="true" />
 
-        {/* Top envelope panel (slides up on open) */}
-        <div className="reference-top-slide" aria-hidden="true" />
+          {/* 2. Top Flap Inside Liner (Revealed above when flap folds open in 3D) */}
+          <div className="wax-flap-liner-back" aria-hidden="true" />
 
-        {/* Bottom envelope panel (slides down on open) */}
-        <div className="reference-bottom-slide" aria-hidden="true" />
+          {/* 3. The Letter Invitation Card (Emerges out of envelope pocket) */}
+          <div
+            id="invitationCard"
+            className="wax-invitation-card"
+            onClick={(e) => {
+              e.stopPropagation();
+              if (stage === 'card-out') accelerateFinish();
+            }}
+          >
+            {/* Elegant Ornamental Gold Frame */}
+            <div className="card-inner-frame" aria-hidden="true" />
+            <div className="card-corner card-corner-tl" aria-hidden="true" />
+            <div className="card-corner card-corner-tr" aria-hidden="true" />
+            <div className="card-corner card-corner-bl" aria-hidden="true" />
+            <div className="card-corner card-corner-br" aria-hidden="true" />
 
-        {/* Dynamic Monogram nested inside the floral watercolor wreath */}
-        <div
-          className="wreath-monogram absolute top-[31%] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10 select-none text-center"
-          aria-hidden="true"
-        >
-          <span className="font-wedding-display text-5xl sm:text-7xl text-[#463120] font-bold italic tracking-tight drop-shadow-[0_1px_2px_rgba(255,245,225,0.85)]">
-            {groomInitial}&amp;{brideInitial}
-          </span>
-        </div>
+            {/* Auspicious Heading */}
+            <div className="card-header-tag">
+              {isMalayalam ? '✨ മംഗള മുഹൂർത്തം ✨' : '✨ AUSPICIOUS WEDDING ✨'}
+            </div>
 
-        {/* The 3D Wax Seal Button (Exact clickable seal in artwork with glowing gold halo) */}
-        <button
-          type="button"
-          onClick={handleOpen}
-          disabled={isOpening}
-          className="wax-touch-btn"
-          aria-label={language === 'ml' ? 'വിവാഹ ക്ഷണക്കത്ത് തുറക്കുക' : 'Touch the wax seal to open the wedding invitation'}
-          title="Touch the wax seal to open"
-        />
+            {/* Couple Names */}
+            <div className="card-couple-block">
+              <div className={`card-names ${isMalayalam ? 'font-malayalam-display font-bold' : 'font-wedding-display'}`}>
+                {groomName} &amp; {brideName}
+              </div>
+              <div className="card-divider" aria-hidden="true">
+                <div className="card-divider-line" />
+                <span className="card-divider-symbol">❦</span>
+                <div className="card-divider-line" />
+              </div>
+            </div>
 
-        {/* Opening Guidance Text */}
-        <div className="wax-touch-label" aria-hidden="true">
-          {language === 'ml' ? 'ക്ഷണക്കത്ത് തുറക്കാൻ ഇവിടെ തൊടുക' : 'TOUCH HERE TO OPEN'}
+            {/* Auspicious Invitation Text */}
+            <div className={`card-invite-text ${isMalayalam ? 'font-malayalam-body text-[12px] sm:text-[13px]' : 'font-wedding-serif'}`}>
+              {isMalayalam
+                ? 'ഞങ്ങളുടെ മംഗളകരമായ വിവാഹ ചടങ്ങിലേക്ക് കുടുംബസമേതം സ്നേഹപൂർവ്വം സ്വാഗതം ചെയ്യുന്നു.'
+                : '"Together with our families, we cordially invite you to celebrate our sacred union of love & bliss."'}
+            </div>
+
+            {/* Date Badge in Theme Colors */}
+            <div className="card-date-badge">
+              {eventDate}
+            </div>
+
+            {/* Venue & Muhurtham details */}
+            <div className="card-footer-block">
+              <div className={`card-venue ${isMalayalam ? 'font-malayalam-body' : ''}`}>
+                {venueTitle}
+              </div>
+              <div className="card-muhurtham-tag">
+                {isMalayalam ? `മുഹൂർത്തം: ${eventTime}` : `MUHURTHAM: ${eventTime}`}
+              </div>
+            </div>
+          </div>
+
+          {/* 4. Envelope Front Pocket (Covers lower portion of card) */}
+          <div className="wax-envelope-pocket" aria-hidden="true" />
+
+          {/* 5. Envelope Top Flap (Folds open 180deg upward in 3D) */}
+          <div className="wax-envelope-flap" aria-hidden="true" />
+
+          {/* Monogram on Top Flap Wreath */}
+          <div className="wax-flap-monogram" aria-hidden="true">
+            <span className="monogram-text">
+              {groomInitial}&amp;{brideInitial}
+            </span>
+          </div>
+
+          {/* 6. Authentic 3D Wax Seal Stamp (Clickable trigger) */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleOpen();
+            }}
+            disabled={stage !== 'closed'}
+            className="wax-seal-btn"
+            aria-label={isMalayalam ? 'വിവാഹ ക്ഷണക്കത്ത് തുറക്കുക' : 'Touch wax seal to open wedding invitation'}
+            title={isMalayalam ? 'തുറക്കാൻ തൊടുക' : 'Touch to open'}
+          >
+            <div className="wax-seal-halo" aria-hidden="true" />
+            <img
+              src="/photos/wax-seal-stamp.png"
+              alt="Golden Wax Seal"
+              className="wax-seal-img"
+              width={86}
+              height={86}
+              loading="eager"
+            />
+          </button>
+
+          {/* 7. Instruction Label */}
+          <div className="wax-touch-label" aria-hidden="true">
+            {isMalayalam ? 'ക്ഷണക്കത്ത് തുറക്കാൻ തൊടുക' : 'TOUCH HERE TO OPEN'}
+          </div>
         </div>
       </div>
     </div>

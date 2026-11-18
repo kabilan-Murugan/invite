@@ -121,7 +121,7 @@ export const WeddingProvider: React.FC<{ children: React.ReactNode }> = ({ child
       const saved = localStorage.getItem(STORAGE_KEY_LANG) as Language;
       if (saved === 'en' || saved === 'ml') return saved;
     }
-    return 'en';
+    return 'ml';
   });
 
   const setLanguage = (lang: Language) => {
