@@ -130,7 +130,7 @@ export const Splash: React.FC = () => {
             </div>
 
             {/* Auspicious Invitation Text */}
-            <div className={`card-invite-text ${isMalayalam ? 'font-malayalam-body text-[12px] sm:text-[13px]' : 'font-wedding-serif'}`}>
+            <div className={`card-invite-text ${isMalayalam ? 'font-malayalam-body text-[13.5px] sm:text-[15px]' : 'font-wedding-serif text-[14.5px] sm:text-[16.5px]'}`}>
               {isMalayalam
                 ? 'ഞങ്ങളുടെ മംഗളകരമായ വിവാഹ ചടങ്ങിലേക്ക് കുടുംബസമേതം സ്നേഹപൂർവ്വം സ്വാഗതം ചെയ്യുന്നു.'
                 : '"Together with our families, we cordially invite you to celebrate our sacred union of love & bliss."'}
@@ -138,12 +138,12 @@ export const Splash: React.FC = () => {
 
             {/* Venue & Invitation Badge (Date & Timings hidden as requested) */}
             <div className="card-footer-block">
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[var(--theme-card-bg)] border border-[var(--theme-gold)]/40 text-[var(--theme-primary)] text-[11px] sm:text-[12px] font-semibold uppercase tracking-wider mb-2 shadow-sm">
-                <span className="text-[var(--theme-gold)]">✦</span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--theme-card-bg)] border border-[var(--theme-gold)]/50 text-[var(--theme-primary)] text-[12px] sm:text-[13px] font-bold uppercase tracking-wider mb-2.5 shadow-sm">
+                <span className="text-[var(--theme-gold)] text-xs">✦</span>
                 <span>{isMalayalam ? 'വിവാഹ ക്ഷണക്കത്ത്' : 'WEDDING INVITATION'}</span>
-                <span className="text-[var(--theme-gold)]">✦</span>
+                <span className="text-[var(--theme-gold)] text-xs">✦</span>
               </div>
-              <div className={`card-venue ${isMalayalam ? 'font-malayalam-body text-[12px]' : ''}`}>
+              <div className={`card-venue ${isMalayalam ? 'font-malayalam-body' : ''}`}>
                 {venueTitle}
               </div>
             </div>
