@@ -90,16 +90,7 @@ async function generatePlaceholders() {
           <path d="M0 -115 C-12 -135 -38 -125 -38 -105 C-38 -85 0 -60 0 -60 C0 -60 38 -85 38 -105 C38 -125 12 -135 0 -115 Z" fill="#E11D48" opacity="0.8"/>
         </g>
 
-        <!-- Typography Overlay -->
-        <text x="${width / 2}" y="${height * 0.72}" text-anchor="middle" font-family="Georgia, serif" font-size="${s.ratio === 'portrait' ? 44 : 40}" font-style="italic" fill="#FFDF78" letter-spacing="3" opacity="0.95">
-          Karthik &amp; Ananya
-        </text>
-        <text x="${width / 2}" y="${height * 0.78}" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="600" fill="#FFF8F0" letter-spacing="6" opacity="0.85">
-          ${s.title.toUpperCase()}
-        </text>
-        <text x="${width / 2}" y="${height * 0.83}" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#E2E8F0" letter-spacing="4" opacity="0.6">
-          PRE-WEDDING MEMORIES • FRAME ${i + 1} OF 10
-        </text>
+        <!-- Clean artistic background without baked-in text -->
       </svg>
     `;
 

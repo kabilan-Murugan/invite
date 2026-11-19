@@ -44,122 +44,146 @@ export const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(252,251,248,0.75)_100%)]" />
       </motion.div>
 
-      {/* Luxury Frosted Pearl Alabaster Card with Embossed Gold Framing */}
-      <motion.div
-        style={{ opacity: opacityParallax }}
-        initial={{ opacity: 0, scale: 0.96, y: 15 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 w-full max-w-[390px] sm:max-w-[430px] mx-auto rounded-[28px] sm:rounded-[34px] bg-white/85 sm:bg-white/80 backdrop-blur-2xl border border-[#D4AF37]/50 px-6 py-8 sm:px-9 sm:py-10 text-center shadow-[0_25px_60px_-15px_rgba(197,160,56,0.22),0_12px_35px_rgba(45,36,36,0.07)]"
-      >
-        {/* Fine Gilded Inner Hairline Frame */}
-        <div className="absolute inset-2 sm:inset-2.5 rounded-[22px] sm:rounded-[28px] border border-[#D4AF37]/25 pointer-events-none" />
-
-        {/* Top Regal Header: ✦ WEDDING INVITATION ✦ */}
+      {/* Main Content Column: Centered Card + High-Contrast Background Typography */}
+      <div className="relative z-10 w-full max-w-[430px] mx-auto flex flex-col items-center">
+        {/* Luxury Frosted Pearl Alabaster Card with Embossed Gold Framing */}
         <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="inline-flex items-center gap-2 mb-5 sm:mb-6"
+          style={{ opacity: opacityParallax }}
+          initial={{ opacity: 0, scale: 0.96, y: 15 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full rounded-[28px] sm:rounded-[34px] bg-white/85 sm:bg-white/80 backdrop-blur-2xl border border-[#D4AF37]/50 px-6 py-8 sm:px-9 sm:py-10 text-center shadow-[0_25px_60px_-15px_rgba(197,160,56,0.22),0_12px_35px_rgba(45,36,36,0.07)] relative"
         >
-          <span className="text-[#C5A038] text-[10px]">✦</span>
-          <span className="text-[11px] sm:text-xs font-serif uppercase tracking-[0.32em] text-[#9B7722] font-semibold">
-            {t.hero.weddingInvitation || 'WEDDING INVITATION'}
-          </span>
-          <span className="text-[#C5A038] text-[10px]">✦</span>
+          {/* Fine Gilded Inner Hairline Frame */}
+          <div className="absolute inset-2 sm:inset-2.5 rounded-[22px] sm:rounded-[28px] border border-[#D4AF37]/25 pointer-events-none" />
+
+          {/* Top Regal Header: ✦ WEDDING INVITATION ✦ */}
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="inline-flex items-center gap-2 mb-5 sm:mb-6"
+          >
+            <span className="text-[#C5A038] text-[10px]">✦</span>
+            <span className="text-[11px] sm:text-xs font-serif uppercase tracking-[0.32em] text-[#9B7722] font-semibold">
+              {t.hero.weddingInvitation || 'WEDDING INVITATION'}
+            </span>
+            <span className="text-[#C5A038] text-[10px]">✦</span>
+          </motion.div>
+
+          {/* Elegant Script Cursive Couple Names */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex flex-col items-center justify-center my-1"
+          >
+            <span
+              className={`text-[#1E2421] font-normal leading-tight tracking-wide drop-shadow-sm ${
+                isMalayalam
+                  ? 'font-malayalam-display text-3xl sm:text-4xl font-bold text-[#1E2421]'
+                  : 'font-wedding-display text-4xl sm:text-5xl md:text-[56px]'
+              }`}
+            >
+              {groomName}
+            </span>
+            <span
+              className={`text-[#C5A038] my-1 leading-none ${
+                isMalayalam ? 'text-lg sm:text-xl font-serif' : 'font-wedding-display text-3xl sm:text-4xl'
+              }`}
+            >
+              &amp;
+            </span>
+            <span
+              className={`text-[#1E2421] font-normal leading-tight tracking-wide drop-shadow-sm ${
+                isMalayalam
+                  ? 'font-malayalam-display text-3xl sm:text-4xl font-bold text-[#1E2421]'
+                  : 'font-wedding-display text-4xl sm:text-5xl md:text-[56px]'
+              }`}
+            >
+              {brideName}
+            </span>
+          </motion.div>
+
+          {/* Delicate Golden Filigree Line */}
+          <div className="flex items-center justify-center gap-2 my-5 opacity-75">
+            <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#C5A038]" />
+            <span className="text-[#C5A038] text-[9px]">❖</span>
+            <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#C5A038]" />
+          </div>
+
+          {/* Romantic Italic Serif Quote */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.45 }}
+            className={`font-serif italic text-[13.5px] sm:text-[15px] leading-relaxed text-[#5C5248] max-w-[310px] mx-auto my-4 sm:my-5 px-1 whitespace-pre-line font-medium ${
+              isMalayalam ? 'font-malayalam-serif not-italic' : ''
+            }`}
+          >
+            {t.hero.quote ||
+              '“United in love, surrounded by grace,\nwe invite you to witness the beginning of\nour forever.”'}
+          </motion.p>
+
+          {/* Groom Lineage Details */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mb-4 sm:mb-5 pt-1"
+          >
+            <h2
+              className={`font-serif font-bold text-xl sm:text-[22px] text-[#1E2421] tracking-wide leading-tight ${
+                isMalayalam ? 'font-malayalam-display font-bold' : ''
+              }`}
+            >
+              {groomName}
+            </h2>
+            <p className="font-serif text-xs sm:text-[13.5px] text-[#6E6459] mt-1 leading-snug font-normal">
+              {isMalayalam ? `${groomParents} എന്നിവരുടെ മകൻ` : `S/o ${groomParents}`}
+            </p>
+          </motion.div>
+
+          {/* Bride Lineage Details */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+          >
+            <h2
+              className={`font-serif font-bold text-xl sm:text-[22px] text-[#1E2421] tracking-wide leading-tight ${
+                isMalayalam ? 'font-malayalam-display font-bold' : ''
+              }`}
+            >
+              {brideName}
+            </h2>
+            <p className="font-serif text-xs sm:text-[13.5px] text-[#6E6459] mt-1 leading-snug font-normal">
+              {isMalayalam ? `${brideParents} എന്നിവരുടെ മകൾ` : `D/o ${brideParents}`}
+            </p>
+          </motion.div>
         </motion.div>
 
-        {/* Elegant Script Cursive Couple Names */}
+        {/* Crystal-Clear, High-Contrast Background Typography (100% Legible in Light Theme) */}
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex flex-col items-center justify-center my-1"
+          transition={{ duration: 0.85, delay: 0.85 }}
+          className="mt-4 sm:mt-5 text-center select-none"
         >
-          <span
-            className={`text-[#1E2421] font-normal leading-tight tracking-wide drop-shadow-sm ${
-              isMalayalam
-                ? 'font-malayalam-display text-3xl sm:text-4xl font-bold text-[#1E2421]'
-                : 'font-wedding-display text-4xl sm:text-5xl md:text-[56px]'
-            }`}
-          >
-            {groomName}
-          </span>
-          <span
-            className={`text-[#C5A038] my-1 leading-none ${
-              isMalayalam ? 'text-lg sm:text-xl font-serif' : 'font-wedding-display text-3xl sm:text-4xl'
-            }`}
-          >
-            &amp;
-          </span>
-          <span
-            className={`text-[#1E2421] font-normal leading-tight tracking-wide drop-shadow-sm ${
-              isMalayalam
-                ? 'font-malayalam-display text-3xl sm:text-4xl font-bold text-[#1E2421]'
-                : 'font-wedding-display text-4xl sm:text-5xl md:text-[56px]'
-            }`}
-          >
-            {brideName}
-          </span>
-        </motion.div>
-
-        {/* Delicate Golden Filigree Line */}
-        <div className="flex items-center justify-center gap-2 my-5 opacity-75">
-          <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#C5A038]" />
-          <span className="text-[#C5A038] text-[9px]">❖</span>
-          <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#C5A038]" />
-        </div>
-
-        {/* Romantic Italic Serif Quote */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.45 }}
-          className={`font-serif italic text-[13.5px] sm:text-[15px] leading-relaxed text-[#5C5248] max-w-[310px] mx-auto my-4 sm:my-5 px-1 whitespace-pre-line font-medium ${
-            isMalayalam ? 'font-malayalam-serif not-italic' : ''
-          }`}
-        >
-          {t.hero.quote ||
-            '“United in love, surrounded by grace,\nwe invite you to witness the beginning of\nour forever.”'}
-        </motion.p>
-
-        {/* Groom Lineage Details */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mb-4 sm:mb-5 pt-1"
-        >
-          <h2
-            className={`font-serif font-bold text-xl sm:text-[22px] text-[#1E2421] tracking-wide leading-tight ${
-              isMalayalam ? 'font-malayalam-display font-bold' : ''
-            }`}
-          >
-            {groomName}
-          </h2>
-          <p className="font-serif text-xs sm:text-[13.5px] text-[#6E6459] mt-1 leading-snug font-normal">
-            {isMalayalam ? `${groomParents} എന്നിവരുടെ മകൻ` : `S/o ${groomParents}`}
+          <div className="flex items-center justify-center gap-2">
+            <span className="text-[#C5A038] text-[9px]">✦</span>
+            <span className="text-xs sm:text-[13px] font-serif uppercase tracking-[0.28em] text-[#8C6D28] font-bold drop-shadow-sm">
+              {isMalayalam ? 'സൂര്യസ്തമയ തീരത്തെ പ്രണയം' : 'Sunset Silhouette by the Shore'}
+            </span>
+            <span className="text-[#C5A038] text-[9px]">✦</span>
+          </div>
+          <p className="text-[10.5px] sm:text-xs font-serif uppercase tracking-[0.24em] text-[#3D352E] font-semibold mt-1">
+            {isMalayalam
+              ? 'പ്രീ-വെഡ്ഡിംഗ് ഓർമ്മകൾ • ഏണസ്റ്റ് & മിഷ്മ'
+              : 'Pre-Wedding Memories • Earnest Paul & Mishma'}
           </p>
         </motion.div>
-
-        {/* Bride Lineage Details */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-        >
-          <h2
-            className={`font-serif font-bold text-xl sm:text-[22px] text-[#1E2421] tracking-wide leading-tight ${
-              isMalayalam ? 'font-malayalam-display font-bold' : ''
-            }`}
-          >
-            {brideName}
-          </h2>
-          <p className="font-serif text-xs sm:text-[13.5px] text-[#6E6459] mt-1 leading-snug font-normal">
-            {isMalayalam ? `${brideParents} എന്നിവരുടെ മകൾ` : `D/o ${brideParents}`}
-          </p>
-        </motion.div>
-      </motion.div>
+      </div>
 
       {/* Floating Audio Button: Pearl White Circle with Luxury Champagne Gold Rim & Music Note */}
       <motion.button
