@@ -21,8 +21,8 @@ interface WeddingContextType {
 
 const WeddingContext = createContext<WeddingContextType | undefined>(undefined);
 
-const STORAGE_KEY_CONFIG = 'wedding_custom_config_v3';
-const STORAGE_KEY_LANG = 'wedding_lang_v2';
+const STORAGE_KEY_CONFIG = 'wedding_custom_config_v6';
+const STORAGE_KEY_LANG = 'wedding_lang_v3';
 
 export const WeddingProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // 1. Wedding Configuration with LocalStorage sync (No DB needed!)
@@ -121,7 +121,7 @@ export const WeddingProvider: React.FC<{ children: React.ReactNode }> = ({ child
       const saved = localStorage.getItem(STORAGE_KEY_LANG) as Language;
       if (saved === 'en' || saved === 'ml') return saved;
     }
-    return 'ml';
+    return 'en';
   });
 
   const setLanguage = (lang: Language) => {

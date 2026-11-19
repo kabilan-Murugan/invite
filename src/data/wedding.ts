@@ -44,7 +44,7 @@ export interface GalleryPhotoItem {
 }
 
 export interface ThemeConfig {
-  presetId: 'dusky-pink' | 'emerald' | 'maroon' | 'rose' | 'sapphire' | 'plum' | 'terracotta' | 'custom';
+  presetId: 'royal-ivory-gold' | 'grayscale' | 'dusky-pink' | 'emerald' | 'maroon' | 'rose' | 'sapphire' | 'plum' | 'terracotta' | 'custom';
   name: string;
   primary: string;         // Main brand color (e.g. #0F4336)
   primaryDark: string;     // Deep header / gradient start (e.g. #0A2B23)
@@ -59,6 +59,34 @@ export interface ThemeConfig {
 }
 
 export const THEME_PRESETS: Record<string, ThemeConfig> = {
+  'royal-ivory-gold': {
+    presetId: 'royal-ivory-gold',
+    name: 'Imperial Pearl Ivory & Champagne Gold',
+    primary: '#1E2421',
+    primaryDark: '#121614',
+    primaryLight: '#3D4A43',
+    gold: '#C5A038',
+    goldLight: '#F7E7BE',
+    goldDark: '#8C6D28',
+    background: '#FCFBF8',
+    cardBg: '#FFFFFF',
+    text: '#1E2421',
+    textMuted: '#5C5449',
+  },
+  grayscale: {
+    presetId: 'grayscale',
+    name: 'Timeless Monochrome & Champagne Gold',
+    primary: '#2B2D31',
+    primaryDark: '#161719',
+    primaryLight: '#43464C',
+    gold: '#D4AF37',
+    goldLight: '#F3E198',
+    goldDark: '#987413',
+    background: '#141517',
+    cardBg: '#212327',
+    text: '#F3F4F6',
+    textMuted: '#9CA3AF',
+  },
   'dusky-pink': {
     presetId: 'dusky-pink',
     name: 'Romantic Dusky Pink & Rose Gold',
@@ -278,39 +306,39 @@ export interface WeddingConfig {
 
 export const weddingData: WeddingConfig = {
   adminPassword: 'wedding2026',
-  theme: THEME_PRESETS['dusky-pink'],
+  theme: THEME_PRESETS['royal-ivory-gold'],
   couple: {
     groom: {
-      nameEn: 'Karthik',
-      nameMl: 'കാർത്തിക്',
-      fullNameEn: 'Er. Karthik Menon',
-      fullNameMl: 'എൻജി. കാർത്തിക് മേനോൻ',
-      qualificationEn: 'B.Tech, MBA',
-      qualificationMl: 'ബി.ടെക്, എം.ബി.എ',
-      parentsEn: 'Mr. K. Narayanan & Mrs. Shailaja Menon',
-      parentsMl: 'ശ്രീ. കെ. നാരായണൻ & ശ്രീമതി. ശൈലജ മേനോൻ',
-      familyHomeEn: 'Thrissur, Kerala',
-      familyHomeMl: 'തൃശ്ശൂർ, കേരളം',
+      nameEn: 'Earnest Paul',
+      nameMl: 'ഏണസ്റ്റ് പോൾ',
+      fullNameEn: 'Earnest Paul',
+      fullNameMl: 'ഏണസ്റ്റ് പോൾ',
+      qualificationEn: '',
+      qualificationMl: '',
+      parentsEn: 'Mr. I. Jayapaul & Mrs. J. Anjalin Mary',
+      parentsMl: 'ശ്രീ. ഐ. ജയപോൾ & ശ്രീമതി. ജെ. ആഞ്ജലിൻ മേരി',
+      familyHomeEn: 'Kochi, Kerala',
+      familyHomeMl: 'കൊച്ചി, കേരളം',
     },
     bride: {
-      nameEn: 'Ananya',
-      nameMl: 'അനന്യ',
-      fullNameEn: 'Dr. Ananya Nair',
-      fullNameMl: 'ഡോ. അനന്യ നായർ',
-      qualificationEn: 'MBBS, MD (Paediatrics)',
-      qualificationMl: 'എം.ബി.ബി.എസ്, എം.ഡി (പീഡിയാട്രിക്സ്)',
-      parentsEn: 'Mr. M. Radhakrishnan & Mrs. Lakshmi Nair',
-      parentsMl: 'ശ്രീ. എം. രാധാകൃഷ്ണൻ & ശ്രീമതി. ലക്ഷ്മി നായർ',
+      nameEn: 'Mishma',
+      nameMl: 'മിഷ്മ',
+      fullNameEn: 'Mishma',
+      fullNameMl: 'മിഷ്മ',
+      qualificationEn: '',
+      qualificationMl: '',
+      parentsEn: 'Mr. P. Aneston & Mrs. A. Sahayam',
+      parentsMl: 'ശ്രീ. പി. അനസ്റ്റൺ & ശ്രീമതി. എ. സഹായം',
       familyHomeEn: 'Kochi, Kerala',
       familyHomeMl: 'കൊച്ചി, കേരളം',
     },
   },
-  hashtag: '#KarAnanyaForever',
+  hashtag: '#EarnestWedsMishma',
   seo: {
-    siteTitle: 'Karthik & Ananya | Wedding Invitation',
-    metaDescription: 'Together with our families, we invite you to celebrate our wedding ceremony and reception.',
+    siteTitle: 'Earnest Paul & Mishma | Wedding Invitation',
+    metaDescription: 'United in love, surrounded by grace, we invite you to witness the beginning of our forever.',
     ogImage: '/og-image.jpg',
-    siteUrl: 'https://karthikwedsananya.com',
+    siteUrl: 'https://earnestwedsmishma.com',
     noindex: false,
   },
   // Target muhurtham IST: 2026-11-29 09:30:00 IST (+05:30)

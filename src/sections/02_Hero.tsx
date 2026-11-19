@@ -1,117 +1,188 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { MapPin, Heart, Sparkles, ChevronDown } from 'lucide-react';
+import { Music, ChevronDown } from 'lucide-react';
 import { useWedding } from '../context/WeddingContext';
 import { ResponsiveWeddingImage } from '../components/common/ResponsiveWeddingImage';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 
 export const Hero: React.FC = () => {
-  const { wedding, t, language } = useWedding();
+  const { wedding, t, language, isPlayingAudio, toggleAudio } = useWedding();
   const prefersReducedMotion = useReducedMotion();
 
   const { scrollY } = useScroll();
-  const yParallax = useTransform(scrollY, [0, 600], [0, prefersReducedMotion ? 0 : 120]);
-  const opacityParallax = useTransform(scrollY, [0, 450], [1, 0.2]);
+  const yParallax = useTransform(scrollY, [0, 600], [0, prefersReducedMotion ? 0 : 70]);
+  const opacityParallax = useTransform(scrollY, [0, 500], [1, 0.35]);
 
-  const groomName = language === 'ml' ? wedding.couple.groom.nameMl : wedding.couple.groom.nameEn;
-  const brideName = language === 'ml' ? wedding.couple.bride.nameMl : wedding.couple.bride.nameEn;
+  const isMalayalam = language === 'ml';
+  const groomName = isMalayalam ? wedding.couple.groom.nameMl : wedding.couple.groom.nameEn;
+  const brideName = isMalayalam ? wedding.couple.bride.nameMl : wedding.couple.bride.nameEn;
+
+  const groomParents = isMalayalam ? wedding.couple.groom.parentsMl : wedding.couple.groom.parentsEn;
+  const brideParents = isMalayalam ? wedding.couple.bride.parentsMl : wedding.couple.bride.parentsEn;
 
   return (
-    <section id="hero" className="relative min-h-[92vh] sm:min-h-screen flex items-end justify-center overflow-hidden pb-16 pt-24">
-      {/* Background Hero Image with Parallax */}
+    <section
+      id="hero"
+      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden px-4 py-12 sm:py-16 select-none bg-[#FCFBF8]"
+    >
+      {/* Radiant High-Key Background Image with Subtle Parallax */}
       <motion.div
         style={{ y: yParallax }}
-        className="absolute inset-0 w-full h-[115%] -top-[10%] z-0"
+        className="absolute inset-0 w-full h-[112%] -top-[6%] z-0"
       >
         <ResponsiveWeddingImage
           id="couple-01"
-          alt={`${wedding.couple.groom.nameEn} and ${wedding.couple.bride.nameEn}`}
+          alt={`${wedding.couple.groom.nameEn} & ${wedding.couple.bride.nameEn}`}
           priority={true}
           className="w-full h-full"
-          imgClassName="w-full h-full object-cover object-center filter brightness-[0.85] saturate-[1.1]"
+          imgClassName="w-full h-full object-cover object-center filter brightness-[1.02] contrast-[0.98] scale-105"
         />
-        {/* Dynamic Theme Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--theme-primary-dark)] via-[var(--theme-primary)]/60 to-black/35" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_transparent_50%,_rgba(var(--theme-primary-dark-rgb),0.88)_100%)]" />
+
+        {/* Ethereal Pearl & Champagne Light Vignette Overlays */}
+        <div className="absolute inset-0 bg-[#FCFBF8]/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FCFBF8]/80 via-[#FCFBF8]/30 to-[#FCFBF8]/90" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(252,251,248,0.75)_100%)]" />
       </motion.div>
 
-      {/* Foreground Content Card */}
+      {/* Luxury Frosted Pearl Alabaster Card with Embossed Gold Framing */}
       <motion.div
         style={{ opacity: opacityParallax }}
-        className="relative z-10 w-full max-w-3xl mx-auto px-4 text-center text-[#FDFBF7]"
+        initial={{ opacity: 0, scale: 0.96, y: 15 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 w-full max-w-[390px] sm:max-w-[430px] mx-auto rounded-[28px] sm:rounded-[34px] bg-white/85 sm:bg-white/80 backdrop-blur-2xl border border-[#D4AF37]/50 px-6 py-8 sm:px-9 sm:py-10 text-center shadow-[0_25px_60px_-15px_rgba(197,160,56,0.22),0_12px_35px_rgba(45,36,36,0.07)]"
       >
-        {/* Save The Date Pill */}
+        {/* Fine Gilded Inner Hairline Frame */}
+        <div className="absolute inset-2 sm:inset-2.5 rounded-[22px] sm:rounded-[28px] border border-[#D4AF37]/25 pointer-events-none" />
+
+        {/* Top Regal Header: ✦ WEDDING INVITATION ✦ */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-[#F3E198]/40 text-[#F3E198] text-xs sm:text-sm font-semibold tracking-widest uppercase mb-4 shadow-lg"
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="inline-flex items-center gap-2 mb-5 sm:mb-6"
         >
-          <Heart className="w-3.5 h-3.5 text-[#F3E198] fill-[#F3E198]" />
-          <span>{t.hero.saveTheDate}</span>
-          <Heart className="w-3.5 h-3.5 text-[#F3E198] fill-[#F3E198]" />
+          <span className="text-[#C5A038] text-[10px]">✦</span>
+          <span className="text-[11px] sm:text-xs font-serif uppercase tracking-[0.32em] text-[#9B7722] font-semibold">
+            {t.hero.weddingInvitation || 'WEDDING INVITATION'}
+          </span>
+          <span className="text-[#C5A038] text-[10px]">✦</span>
         </motion.div>
 
-        {/* Couple Names - Auto-fitting & Resilient Typography */}
-        <motion.h1
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.4 }}
-          className={`w-full max-w-3xl mx-auto px-2 text-center drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] leading-tight py-2 ${
-            language === 'ml'
-              ? 'font-malayalam-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-normal'
-              : 'font-wedding-display text-4xl sm:text-6xl md:text-7xl font-bold'
-          }`}
+        {/* Elegant Script Cursive Couple Names */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="flex flex-col items-center justify-center my-1"
         >
-          <span className="inline-block break-words">{groomName}</span>
-          <span className="inline-block text-2xl sm:text-4xl lg:text-5xl font-serif text-[#F3E198] mx-2 sm:mx-3">&amp;</span>
-          <span className="inline-block break-words">{brideName}</span>
-        </motion.h1>
+          <span
+            className={`text-[#1E2421] font-normal leading-tight tracking-wide drop-shadow-sm ${
+              isMalayalam
+                ? 'font-malayalam-display text-3xl sm:text-4xl font-bold text-[#1E2421]'
+                : 'font-wedding-display text-4xl sm:text-5xl md:text-[56px]'
+            }`}
+          >
+            {groomName}
+          </span>
+          <span
+            className={`text-[#C5A038] my-1 leading-none ${
+              isMalayalam ? 'text-lg sm:text-xl font-serif' : 'font-wedding-display text-3xl sm:text-4xl'
+            }`}
+          >
+            &amp;
+          </span>
+          <span
+            className={`text-[#1E2421] font-normal leading-tight tracking-wide drop-shadow-sm ${
+              isMalayalam
+                ? 'font-malayalam-display text-3xl sm:text-4xl font-bold text-[#1E2421]'
+                : 'font-wedding-display text-4xl sm:text-5xl md:text-[56px]'
+            }`}
+          >
+            {brideName}
+          </span>
+        </motion.div>
 
-        {/* Wedding Tagline */}
+        {/* Delicate Golden Filigree Line */}
+        <div className="flex items-center justify-center gap-2 my-5 opacity-75">
+          <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#C5A038]" />
+          <span className="text-[#C5A038] text-[9px]">❖</span>
+          <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#C5A038]" />
+        </div>
+
+        {/* Romantic Italic Serif Quote */}
         <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-sm sm:text-base text-stone-100 font-light tracking-wide mt-2 mb-6"
-        >
-          {t.hero.gettingMarried}
-        </motion.p>
-
-        {/* Location & Scratch Hint Pill Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="p-3.5 sm:p-4 rounded-2xl glass-card-emerald max-w-md mx-auto shadow-2xl flex flex-col sm:flex-row items-center justify-around gap-3 text-xs sm:text-sm text-white/95 cursor-pointer"
-          onClick={() => {
-            const el = document.getElementById('remember-date') || document.getElementById('countdown');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }}
-        >
-          <div className="flex items-center gap-2 text-[#F3E198]">
-            <Sparkles className="w-4 h-4 text-[#F3E198]" />
-            <span className="font-medium underline underline-offset-4 decoration-[#D4AF37]">
-              {language === 'ml' ? 'തീയതി ചുരണ്ടി കാണുക ↓' : 'Scratch to Reveal Date ↓'}
-            </span>
-          </div>
-          <div className="hidden sm:block w-[1px] h-4 bg-[#D4AF37]/40" />
-          <div className="flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-[#F3E198]" />
-            <span>{t.hero.venueCity}</span>
-          </div>
-        </motion.div>
-
-        {/* Scroll down prompt */}
-        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="mt-8 flex flex-col items-center justify-center text-stone-200/80 text-[11px] uppercase tracking-widest gap-1"
+          transition={{ duration: 0.8, delay: 0.45 }}
+          className={`font-serif italic text-[13.5px] sm:text-[15px] leading-relaxed text-[#5C5248] max-w-[310px] mx-auto my-4 sm:my-5 px-1 whitespace-pre-line font-medium ${
+            isMalayalam ? 'font-malayalam-serif not-italic' : ''
+          }`}
         >
-          <span>{t.hero.scrollDown}</span>
-          <ChevronDown className="w-4 h-4 text-[#F3E198] animate-bounce" />
+          {t.hero.quote ||
+            '“United in love, surrounded by grace,\nwe invite you to witness the beginning of\nour forever.”'}
+        </motion.p>
+
+        {/* Groom Lineage Details */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mb-4 sm:mb-5 pt-1"
+        >
+          <h2
+            className={`font-serif font-bold text-xl sm:text-[22px] text-[#1E2421] tracking-wide leading-tight ${
+              isMalayalam ? 'font-malayalam-display font-bold' : ''
+            }`}
+          >
+            {groomName}
+          </h2>
+          <p className="font-serif text-xs sm:text-[13.5px] text-[#6E6459] mt-1 leading-snug font-normal">
+            {isMalayalam ? `${groomParents} എന്നിവരുടെ മകൻ` : `S/o ${groomParents}`}
+          </p>
         </motion.div>
+
+        {/* Bride Lineage Details */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+        >
+          <h2
+            className={`font-serif font-bold text-xl sm:text-[22px] text-[#1E2421] tracking-wide leading-tight ${
+              isMalayalam ? 'font-malayalam-display font-bold' : ''
+            }`}
+          >
+            {brideName}
+          </h2>
+          <p className="font-serif text-xs sm:text-[13.5px] text-[#6E6459] mt-1 leading-snug font-normal">
+            {isMalayalam ? `${brideParents} എന്നിവരുടെ മകൾ` : `D/o ${brideParents}`}
+          </p>
+        </motion.div>
+      </motion.div>
+
+      {/* Floating Audio Button: Pearl White Circle with Luxury Champagne Gold Rim & Music Note */}
+      <motion.button
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        type="button"
+        onClick={toggleAudio}
+        className="absolute bottom-5 right-5 sm:bottom-7 sm:right-7 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#9B7722] border-2 border-[#C5A038] shadow-[0_4px_20px_rgba(197,160,56,0.35),0_2px_8px_rgba(0,0,0,0.06)] flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#C5A038]/50"
+        aria-label={isPlayingAudio ? t.header.audioPause : t.header.audioPlay}
+        title={isPlayingAudio ? t.header.audioPause : t.header.audioPlay}
+      >
+        <Music className={`w-4 h-4 text-[#9B7722] ${isPlayingAudio ? 'animate-pulse' : ''}`} />
+      </motion.button>
+
+      {/* Subtle Scroll Down Prompt at Bottom Center */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1 }}
+        className="absolute bottom-2.5 sm:bottom-3 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center justify-center text-[#9B7722]/80 text-[10px] uppercase tracking-widest gap-1 pointer-events-none"
+      >
+        <ChevronDown className="w-3.5 h-3.5 text-[#C5A038] animate-bounce" />
       </motion.div>
     </section>
   );

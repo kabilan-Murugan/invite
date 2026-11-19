@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Volume2, VolumeX, Globe } from 'lucide-react';
 import { useWedding } from '../../context/WeddingContext';
 
 export const Header: React.FC = () => {
   const { wedding, language, toggleLanguage, t, isPlayingAudio, toggleAudio } = useWedding();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 150);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-3 left-0 right-0 z-40 px-3 sm:px-6 pointer-events-none">
+    <header
+      className={`fixed top-3 left-0 right-0 z-40 px-3 sm:px-6 pointer-events-none transition-all duration-500 ease-out ${
+        scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+      }`}
+    >
       <div className="max-w-5xl xl:max-w-6xl mx-auto flex items-center justify-between pointer-events-auto">
         {/* Monogram / Brand */}
         <a

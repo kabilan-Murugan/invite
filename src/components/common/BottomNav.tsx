@@ -6,6 +6,16 @@ import { shareInvitation } from '../../lib/share';
 export const BottomNav: React.FC = () => {
   const { wedding, t, language } = useWedding();
   const [copied, setCopied] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 200);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleShare = async () => {
     const groomName = language === 'ml' ? wedding.couple.groom.nameMl : wedding.couple.groom.nameEn;
@@ -26,7 +36,11 @@ export const BottomNav: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 px-3 pb-3 pt-1 pointer-events-none md:hidden">
+    <div
+      className={`fixed bottom-0 left-0 right-0 z-40 px-3 pb-3 pt-1 pointer-events-none md:hidden transition-all duration-500 ease-out ${
+        scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 pointer-events-none'
+      }`}
+    >
       <nav
         aria-label="Mobile quick actions"
         className="max-w-md mx-auto glass-card-emerald rounded-2xl shadow-2xl shadow-black/25 border border-[#F3E198]/40 px-2 py-1.5 flex items-center justify-around pointer-events-auto backdrop-blur-lg"

@@ -18,6 +18,10 @@ export interface Translations {
     gettingMarried: string;
     venueCity: string;
     scrollDown: string;
+    weddingInvitation: string;
+    quote: string;
+    sonOf: string;
+    daughterOf: string;
   };
   invitation: {
     blessing: string;
@@ -141,6 +145,10 @@ export const translations: Record<Language, Translations> = {
       gettingMarried: 'Are getting married',
       venueCity: 'Kochi, Kerala',
       scrollDown: 'Scroll to begin our story',
+      weddingInvitation: 'WEDDING INVITATION',
+      quote: '“United in love, surrounded by grace,\nwe invite you to witness the beginning of\nour forever.”',
+      sonOf: 'S/o',
+      daughterOf: 'D/o',
     },
     invitation: {
       blessing: '|| Sukham Bhavatu • Subham Bhavatu ||',
@@ -264,6 +272,10 @@ export const translations: Record<Language, Translations> = {
       gettingMarried: 'വിവാഹിതരാകുന്നു',
       venueCity: 'കൊച്ചി, കേരളം',
       scrollDown: 'വിശേഷങ്ങൾ കാണാൻ താഴേക്ക് തുടരുക',
+      weddingInvitation: 'വിവാഹ ക്ഷണക്കത്ത്',
+      quote: '“സ്നേഹത്തിൽ ഒന്നായി, കൃപയാൽ നിറഞ്ഞ്,\nഞങ്ങളുടെ അനശ്വര ജീവിതത്തിന്റെ തുടക്കത്തിന്\nസാക്ഷിയാകുവാൻ നിങ്ങളെ സ്നേഹപൂർവ്വം ക്ഷണിക്കുന്നു.”',
+      sonOf: 'മകൻ:',
+      daughterOf: 'മകൾ:',
     },
     invitation: {
       blessing: '|| ഹരിഃ ശ്രീ ഗണപതയേ നമഃ • ശുഭം ഭവതു ||',

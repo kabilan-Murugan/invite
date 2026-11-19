@@ -92,11 +92,11 @@ const MainWeddingContent: React.FC = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#FFF8F0] text-[#2D2424] overflow-x-hidden selection:bg-[#C9A227]/30 selection:text-[#6B1E2E]">
+    <div className="relative min-h-screen bg-[#FCFBF8] text-[#1E2421] overflow-x-hidden selection:bg-[#C5A038]/30 selection:text-[#1E2421]">
       {/* Scroll Reading Progress Bar */}
       <ScrollProgress />
 
-      {/* Falling Floral Rose Petals & Starlight Sparkles */}
+      {/* Falling Floral Petals & Golden Starlight Sparkles */}
       <PetalsCanvas />
 
       {/* Floating Header */}
@@ -106,7 +106,7 @@ const MainWeddingContent: React.FC = () => {
       <Splash />
 
       {/* Desktop Wrapper: Centers content in phone-first reading column or responsive two-column */}
-      <main className="w-full max-w-5xl xl:max-w-6xl mx-auto shadow-2xl shadow-[#0F4336]/10 bg-[#FFF8F0] min-h-screen transition-all">
+      <main className="w-full max-w-5xl xl:max-w-6xl mx-auto shadow-2xl shadow-[#C5A038]/10 bg-[#FCFBF8] min-h-screen transition-all">
         {/* Section 2: Hero */}
         <Hero />
 

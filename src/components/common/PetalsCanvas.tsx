@@ -38,7 +38,8 @@ export const PetalsCanvas: React.FC<{ className?: string }> = ({ className = '' 
 
     window.addEventListener('resize', handleResize);
 
-    const petalColors = ['#F43F5E', '#E11D48', '#BE123C', '#FBCFE8', '#C9A227'];
+    // Elegant ivory blossoms, pearl petals & shimmering champagne gold stardust
+    const petalColors = ['#FFFFFF', '#FFFBF5', '#FEF3C7', '#FDF2F8', '#D4AF37', '#F3E198'];
     const numItems = Math.min(28, Math.floor(window.innerWidth / 30));
 
     const items: Petal[] = Array.from({ length: numItems }, () => ({
