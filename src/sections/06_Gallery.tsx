@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback, lazy, Suspense } from 'react';
 import { motion, type PanInfo } from 'framer-motion';
 import {
   ChevronLeft,
@@ -64,13 +64,22 @@ export const Gallery: React.FC = () => {
     return () => clearInterval(timer);
   }, [isAutoPlaying, isHovered, prefersReducedMotion, viewMode, filteredPhotos.length]);
 
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + filteredPhotos.length) % filteredPhotos.length);
-  };
+  const lastActionTimeRef = useRef<number>(0);
+  const dragHandledRef = useRef<boolean>(false);
 
-  const handleNext = () => {
+  const handlePrev = useCallback(() => {
+    const now = Date.now();
+    if (now - lastActionTimeRef.current < 350) return;
+    lastActionTimeRef.current = now;
+    setActiveIndex((prev) => (prev - 1 + filteredPhotos.length) % filteredPhotos.length);
+  }, [filteredPhotos.length]);
+
+  const handleNext = useCallback(() => {
+    const now = Date.now();
+    if (now - lastActionTimeRef.current < 350) return;
+    lastActionTimeRef.current = now;
     setActiveIndex((prev) => (prev + 1) % filteredPhotos.length);
-  };
+  }, [filteredPhotos.length]);
 
   // Touch Swipe & Drag Handling
   const touchStartXRef = useRef<number | null>(null);
@@ -94,6 +103,15 @@ export const Gallery: React.FC = () => {
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     setIsHovered(false);
+
+    // If Framer Motion already handled this swipe on the center card, skip duplicate trigger
+    if (dragHandledRef.current) {
+      dragHandledRef.current = false;
+      touchStartXRef.current = null;
+      touchStartYRef.current = null;
+      return;
+    }
+
     if (touchStartXRef.current === null || touchStartYRef.current === null) return;
 
     const endX = e.changedTouches[0].clientX;
@@ -114,20 +132,23 @@ export const Gallery: React.FC = () => {
     touchStartYRef.current = null;
     setTimeout(() => {
       isDraggingRef.current = false;
-    }, 150);
+    }, 200);
   };
 
   // Framer Motion Pan & Drag on active center card
   const handleFramerDragEnd = (_e: any, info: PanInfo) => {
     const { offset, velocity } = info;
     if (offset.x < -36 || velocity.x < -300) {
+      dragHandledRef.current = true;
       handleNext();
     } else if (offset.x > 36 || velocity.x > 300) {
+      dragHandledRef.current = true;
       handlePrev();
     }
     setTimeout(() => {
       isDraggingRef.current = false;
-    }, 150);
+      dragHandledRef.current = false;
+    }, 200);
   };
 
   const openLightboxForIndex = (index: number) => {
