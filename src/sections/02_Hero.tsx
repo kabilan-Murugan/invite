@@ -35,27 +35,26 @@ export const Hero: React.FC = () => {
           alt={`${wedding.couple.groom.nameEn} & ${wedding.couple.bride.nameEn}`}
           priority={true}
           className="w-full h-full"
-          imgClassName="w-full h-full object-cover object-center filter brightness-[1.02] contrast-[0.98] scale-105"
+          imgClassName="w-full h-full object-cover object-center filter grayscale contrast-[1.12] brightness-[0.97] scale-105"
         />
 
-        {/* Ethereal Pearl & Champagne Light Vignette Overlays */}
-        <div className="absolute inset-0 bg-[#FCFBF8]/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FCFBF8]/80 via-[#FCFBF8]/30 to-[#FCFBF8]/90" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(252,251,248,0.75)_100%)]" />
+        {/* Ethereal Pearl & Champagne Light Vignette Overlays (Softened to maximize background photo visibility) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FCFBF8]/35 via-transparent to-[#FCFBF8]/60" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_45%,_rgba(252,251,248,0.45)_100%)]" />
       </motion.div>
 
-      {/* Main Content Column: Centered Card + High-Contrast Background Typography */}
+      {/* Main Content Column: Centered Translucent Glass Card + High-Contrast Background Typography */}
       <div className="relative z-10 w-full max-w-[430px] mx-auto flex flex-col items-center">
-        {/* Luxury Frosted Pearl Alabaster Card with Embossed Gold Framing */}
+        {/* Luxury Translucent Frosted Glass Card with Embossed Gold Framing */}
         <motion.div
           style={{ opacity: opacityParallax }}
           initial={{ opacity: 0, scale: 0.96, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full rounded-[28px] sm:rounded-[34px] bg-white/85 sm:bg-white/80 backdrop-blur-2xl border border-[#D4AF37]/50 px-6 py-8 sm:px-9 sm:py-10 text-center shadow-[0_25px_60px_-15px_rgba(197,160,56,0.22),0_12px_35px_rgba(45,36,36,0.07)] relative"
+          className="w-full rounded-[28px] sm:rounded-[34px] bg-white/45 sm:bg-white/40 backdrop-blur-md border border-white/70 px-6 py-8 sm:px-9 sm:py-10 text-center shadow-[0_20px_50px_-12px_rgba(0,0,0,0.09),0_0_0_1px_rgba(212,175,55,0.35)] relative"
         >
           {/* Fine Gilded Inner Hairline Frame */}
-          <div className="absolute inset-2 sm:inset-2.5 rounded-[22px] sm:rounded-[28px] border border-[#D4AF37]/25 pointer-events-none" />
+          <div className="absolute inset-2 sm:inset-2.5 rounded-[22px] sm:rounded-[28px] border border-[#D4AF37]/35 pointer-events-none" />
 
           {/* Top Regal Header: ✦ WEDDING INVITATION ✦ */}
           <motion.div
@@ -168,7 +167,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, delay: 0.85 }}
-          className="mt-4 sm:mt-5 text-center select-none"
+          className="mt-4 sm:mt-5 text-center select-none px-4 py-2 rounded-2xl bg-white/40 backdrop-blur-md border border-white/60 shadow-sm"
         >
           <div className="flex items-center justify-center gap-2">
             <span className="text-[#C5A038] text-[9px]">✦</span>
@@ -177,7 +176,7 @@ export const Hero: React.FC = () => {
             </span>
             <span className="text-[#C5A038] text-[9px]">✦</span>
           </div>
-          <p className="text-[10.5px] sm:text-xs font-serif uppercase tracking-[0.24em] text-[#3D352E] font-semibold mt-1">
+          <p className="text-[10px] sm:text-[11.5px] font-serif uppercase tracking-[0.22em] text-[#2D241E] font-semibold mt-1">
             {isMalayalam
               ? 'പ്രീ-വെഡ്ഡിംഗ് ഓർമ്മകൾ • ഏണസ്റ്റ് & മിഷ്മ'
               : 'Pre-Wedding Memories • Earnest Paul & Mishma'}

@@ -9,7 +9,6 @@ import { Splash } from './sections/01_Splash';
 import { Hero } from './sections/02_Hero';
 import { InvitationMessage } from './sections/03_InvitationMessage';
 import { Countdown } from './sections/04_Countdown';
-import { OurStory } from './sections/05_OurStory';
 import { Gallery } from './sections/06_Gallery';
 import { EventDetails } from './sections/07_EventDetails';
 import { VenueMap } from './sections/08_VenueMap';
