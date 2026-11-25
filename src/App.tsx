@@ -117,7 +117,7 @@ const MainWeddingContent: React.FC = () => {
         <Countdown />
 
         {/* Section 5: Our Story Milestones */}
-        <OurStory />
+        {/* <OurStory /> */}
 
         {/* Section 6: Pre-wedding Photo Gallery */}
         <Gallery />

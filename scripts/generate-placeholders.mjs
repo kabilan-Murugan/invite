@@ -15,7 +15,7 @@ if (!fs.existsSync(PUBLIC_AUDIO)) {
 
 // Color palettes for romantic couple scenes
 const scenes = [
-  { name: 'couple-01', title: 'Sunset Silhouette by the Shore', bg1: '#6B1E2E', bg2: '#D97706', accent: '#FEF3C7', ratio: 'landscape' },
+  { name: '1', title: 'Sunset Silhouette by the Shore', bg1: '#6B1E2E', bg2: '#D97706', accent: '#FEF3C7', ratio: 'landscape' },
   { name: 'couple-02', title: 'Traditional Silk Radiance', bg1: '#831843', bg2: '#C9A227', accent: '#FFFBEB', ratio: 'portrait' },
   { name: 'couple-03', title: 'Laughter Under Monsoon Rain', bg1: '#1E293B', bg2: '#3B82F6', accent: '#E0F2FE', ratio: 'landscape' },
   { name: 'couple-04', title: 'Golden Temple Pathways', bg1: '#78350F', bg2: '#F59E0B', accent: '#FEF9C3', ratio: 'portrait' },

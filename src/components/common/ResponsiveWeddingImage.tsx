@@ -24,7 +24,7 @@ export const ResponsiveWeddingImage: React.FC<ResponsiveWeddingImageProps> = ({
   const data = (optimizedManifest as Record<string, any>)[id];
 
   // Fallback if id not in manifest
-  const fallbackSrc = `/src/assets/prewedding/${id}.jpg`;
+  const fallbackSrc = `/src/assets/prewedding/${id}.jpeg`;
   const defaultSrc = data?.defaultSrc || fallbackSrc;
   const webpSrcSet = data?.webpSrcSet;
   const avifSrcSet = data?.avifSrcSet;
