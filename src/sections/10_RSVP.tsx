@@ -37,7 +37,7 @@ export const RSVP: React.FC = () => {
       name: '',
       guests: 1,
       attending: 'yes',
-      events: ['Engagement', 'Reception', 'Muhurtham'],
+      events: ['Haldi', 'Reception', 'Muhurtham'],
       message: '',
       honeypot: '',
     },

@@ -216,7 +216,7 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
           name: 'Dr. Suresh Kumar & Family',
           guests: 4,
           attending: 'yes',
-          events: 'Engagement, Reception, Muhurtham',
+          events: 'Haldi, Reception, Muhurtham',
           message: 'Heartiest congratulations to Karthik & Ananya! Wishing you endless bliss and happiness.',
           created_at: '2026-10-28 14:30:00',
         },
@@ -649,11 +649,10 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                   <button
                     type="button"
                     onClick={() => handleSetMenuLayout('wrap')}
-                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                      menuLayout === 'wrap'
+                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${menuLayout === 'wrap'
                         ? 'bg-white text-[#0F4336] shadow-sm font-bold'
                         : 'text-stone-500 hover:text-stone-900'
-                    }`}
+                      }`}
                     title="Wrap all 10 section tabs into visible rows so none are ever cut off"
                   >
                     <LayoutGrid className="w-3.5 h-3.5" />
@@ -663,11 +662,10 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                   <button
                     type="button"
                     onClick={() => handleSetMenuLayout('scroll')}
-                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                      menuLayout === 'scroll'
+                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${menuLayout === 'scroll'
                         ? 'bg-white text-[#0F4336] shadow-sm font-bold'
                         : 'text-stone-500 hover:text-stone-900'
-                    }`}
+                      }`}
                     title="Show single-line scrollable ribbon with arrow controls"
                   >
                     <SlidersHorizontal className="w-3.5 h-3.5" />
@@ -707,19 +705,17 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                         key={tab.id}
                         type="button"
                         onClick={() => setActiveTab(tab.id)}
-                        className={`group flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
-                          isActive
+                        className={`group flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${isActive
                             ? 'bg-[#0F4336] text-white shadow-md ring-2 ring-[#D4AF37] scale-102 font-bold'
                             : 'bg-white text-stone-700 hover:text-[#0F4336] hover:bg-stone-50 border border-stone-200 hover:border-stone-400 active:scale-98'
-                        }`}
+                          }`}
                       >
                         <span className="text-sm">{tab.emoji}</span>
                         <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#F3E198]' : 'text-stone-400 group-hover:text-[#0F4336]'}`} />
                         <span>{tab.label}</span>
                         <span
-                          className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
-                            isActive ? 'bg-white/20 text-white' : 'bg-stone-100 text-stone-400'
-                          }`}
+                          className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${isActive ? 'bg-white/20 text-white' : 'bg-stone-100 text-stone-400'
+                            }`}
                         >
                           {idx + 1}
                         </span>
@@ -753,19 +749,17 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                           ref={isActive ? activeTabRef : undefined}
                           type="button"
                           onClick={() => setActiveTab(tab.id)}
-                          className={`group flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
-                            isActive
+                          className={`group flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 ${isActive
                               ? 'bg-[#0F4336] text-white shadow-md ring-2 ring-[#D4AF37] font-bold'
                               : 'bg-white text-stone-700 hover:text-[#0F4336] hover:bg-stone-50 border border-stone-200 hover:border-stone-400 active:scale-98'
-                          }`}
+                            }`}
                         >
                           <span className="text-sm">{tab.emoji}</span>
                           <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#F3E198]' : 'text-stone-400 group-hover:text-[#0F4336]'}`} />
                           <span>{tab.label}</span>
                           <span
-                            className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
-                              isActive ? 'bg-white/20 text-white' : 'bg-stone-100 text-stone-400'
-                            }`}
+                            className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${isActive ? 'bg-white/20 text-white' : 'bg-stone-100 text-stone-400'
+                              }`}
                           >
                             {idx + 1}
                           </span>
@@ -820,11 +814,10 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                           key={key}
                           type="button"
                           onClick={() => handleSelectPreset(key)}
-                          className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer relative ${
-                            isSelected
+                          className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer relative ${isSelected
                               ? 'border-2 border-[#0F4336] bg-stone-50 shadow-md ring-2 ring-[#0F4336]/20'
                               : 'border-stone-200 bg-white hover:border-stone-300 hover:shadow-sm'
-                          }`}
+                            }`}
                         >
                           <div className="flex items-center justify-between mb-2">
                             <span className="text-xs font-bold text-stone-800">{preset.name}</span>
@@ -988,11 +981,10 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                   <button
                     type="button"
                     onClick={handleTogglePreviewAudio}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold shadow-md active:scale-95 transition-all cursor-pointer ${
-                      isPreviewPlaying
+                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold shadow-md active:scale-95 transition-all cursor-pointer ${isPreviewPlaying
                         ? 'bg-amber-600 text-white animate-pulse'
                         : 'bg-[#0F4336] text-white hover:bg-[#0A2B23]'
-                    }`}
+                      }`}
                   >
                     {isPreviewPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                     <span>{isPreviewPlaying ? 'Pause Test Audio' : 'Preview / Test Music'}</span>
@@ -1011,11 +1003,10 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                         <div
                           key={preset.id}
                           onClick={() => handleSelectAudioPreset(preset)}
-                          className={`p-4 rounded-2xl border cursor-pointer transition-all ${
-                            isSelected
+                          className={`p-4 rounded-2xl border cursor-pointer transition-all ${isSelected
                               ? 'border-2 border-[#0F4336] bg-emerald-50/50 shadow-sm'
                               : 'border-stone-200 bg-stone-50 hover:border-stone-300'
-                          }`}
+                            }`}
                         >
                           <div className="flex items-center justify-between mb-1">
                             <span className="text-xs font-bold text-stone-800">{preset.title}</span>
@@ -2453,11 +2444,10 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                             <div className="flex items-center gap-2">
                               <span className="font-semibold text-sm text-stone-800">{r.name}</span>
                               <span
-                                className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                                  r.attending === 'yes'
+                                className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold ${r.attending === 'yes'
                                     ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                                     : 'bg-stone-100 text-stone-500 border border-stone-200'
-                                }`}
+                                  }`}
                               >
                                 {r.attending === 'yes' ? (
                                   <>

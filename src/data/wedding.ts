@@ -1,6 +1,6 @@
 export interface WeddingEvent {
   id: string;
-  key: 'engagement' | 'reception' | 'muhurtham';
+  key: 'engagement' | 'reception' | 'muhurtham' | 'haldi';
   titleEn: string;
   titleMl: string;
   taglineEn: string;
@@ -18,7 +18,7 @@ export interface WeddingEvent {
   mapLink: string;
   dressCodeEn?: string;
   dressCodeMl?: string;
-  iconName: 'ring' | 'celebration' | 'mandapam';
+  iconName: 'ring' | 'celebration' | 'mandapam' | 'sparkles' | 'sun';
 }
 
 export interface StoryMilestone {
@@ -357,12 +357,12 @@ export const weddingData: WeddingConfig = {
   "countdownTargetIso": "2027-02-07T09:30:00+05:30",
   "events": [
     {
-      "id": "engagement",
-      "key": "engagement",
-      "titleEn": "Nichayathartham (Engagement)",
-      "titleMl": "വിവാഹനിശ്ചയം",
-      "taglineEn": "",
-      "taglineMl": "",
+      "id": "haldi",
+      "key": "haldi",
+      "titleEn": "Haldi Ceremony",
+      "titleMl": "ഹൽദി ചടങ്ങ്",
+      "taglineEn": "A vibrant celebration of turmeric, laughter, and blessings",
+      "taglineMl": "മഞ്ഞളണിഞ്ഞ് സ്നേഹവും സന്തോഷവും പങ്കിടുന്ന മംഗളവേള",
       "dateEn": "Friday, February 05, 2027",
       "dateMl": "2027 ഫെബ്രുവരി 5, വെള്ളിയാഴ്ച",
       "timeEn": "",
@@ -374,9 +374,9 @@ export const weddingData: WeddingConfig = {
       "addressEn": "",
       "addressMl": "",
       "mapLink": "",
-      "dressCodeEn": "Traditional Kasavu Saree / Kurta or Ethnic Wear",
-      "dressCodeMl": "കേരള കസവ് സാരി / കുർത്ത / പരമ്പരാഗത വസ്ത്രം",
-      "iconName": "ring"
+      "dressCodeEn": "Yellow / Mustard Traditional Ethnic Wear",
+      "dressCodeMl": "മഞ്ഞ നിറത്തിലുള്ള പരമ്പരാഗത വസ്ത്രം",
+      "iconName": "sparkles"
     },
     {
       "id": "muhurtham",

@@ -66,8 +66,10 @@ export const EventDetails: React.FC = () => {
           return 'വിവാഹ മുഹൂർത്തം';
         case 'reception':
           return 'വിവാഹ സൽക്കാരം';
+        case 'haldi':
+          return 'ഹൽദി ചടങ്ങ്';
         case 'engagement':
-          return 'വിവാഹനിശ്ചയം';
+          return 'ഹൽദി ചടങ്ങ്';
         default:
           return 'മംഗള ചടങ്ങ്';
       }
@@ -78,8 +80,10 @@ export const EventDetails: React.FC = () => {
         return 'MARRIAGE';
       case 'reception':
         return 'RECEPTION';
+      case 'haldi':
+        return 'HALDI';
       case 'engagement':
-        return 'ENGAGEMENT';
+        return 'HALDI';
       default:
         return 'CELEBRATION';
     }
