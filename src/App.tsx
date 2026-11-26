@@ -12,7 +12,7 @@ import { Countdown } from './sections/04_Countdown';
 import { Gallery } from './sections/06_Gallery';
 import { EventDetails } from './sections/07_EventDetails';
 import { VenueMap } from './sections/08_VenueMap';
-import { QRCodeSection } from './sections/09_QRCode';
+// import { QRCodeSection } from './sections/09_QRCode';
 import { RSVP } from './sections/10_RSVP';
 import { Footer } from './sections/11_Footer';
 import { PrintableQR } from './pages/PrintableQR';
@@ -128,7 +128,7 @@ const MainWeddingContent: React.FC = () => {
         <VenueMap />
 
         {/* Section 9: QR Code & Sharing */}
-        <QRCodeSection onOpenPrintable={() => navigateTo('qr-print')} />
+        {/* <QRCodeSection onOpenPrintable={() => navigateTo('qr-print')} /> */}
 
         {/* Section 10: RSVP Form */}
         <RSVP />

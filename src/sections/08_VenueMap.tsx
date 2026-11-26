@@ -1,5 +1,5 @@
 import React, { useState, Suspense, lazy } from 'react';
-import { MapPin, Navigation, Share2, Car, Hotel, Compass, Check, ChevronDown } from 'lucide-react';
+import { MapPin, Navigation, Share2, Check, } from 'lucide-react';
 import { useWedding } from '../context/WeddingContext';
 import { shareInvitation } from '../lib/share';
 import { GoldDivider } from '../components/common/GoldDivider';
@@ -9,14 +9,14 @@ const LazyMap = lazy(() => import('../components/lazy/LazyMap'));
 export const VenueMap: React.FC = () => {
   const { wedding, t, language } = useWedding();
   const [copied, setCopied] = useState(false);
-  const [openAccordion, setOpenAccordion] = useState<string | null>('parking');
+  // const [openAccordion, setOpenAccordion] = useState<string | null>('parking');
 
   const venue = wedding.venue;
   const venueName = language === 'ml' ? venue.nameMl : venue.nameEn;
   const address = language === 'ml' ? venue.addressMl : venue.addressEn;
-  const parkingTips = language === 'ml' ? venue.parkingTipsMl : venue.parkingTipsEn;
-  const stayTips = language === 'ml' ? venue.stayTipsMl : venue.stayTipsEn;
-  const landmarks = language === 'ml' ? venue.landmarksMl : venue.landmarksEn;
+  // const parkingTips = language === 'ml' ? venue.parkingTipsMl : venue.parkingTipsEn;
+  // const stayTips = language === 'ml' ? venue.stayTipsMl : venue.stayTipsEn;
+  // const landmarks = language === 'ml' ? venue.landmarksMl : venue.landmarksEn;
 
   const handleShareLocation = async () => {
     const result = await shareInvitation({
@@ -31,9 +31,9 @@ export const VenueMap: React.FC = () => {
     }
   };
 
-  const toggleAccordion = (key: string) => {
-    setOpenAccordion(openAccordion === key ? null : key);
-  };
+  // const toggleAccordion = (key: string) => {
+  //   setOpenAccordion(openAccordion === key ? null : key);
+  // };
 
   return (
     <section id="venue" className="py-16 sm:py-24 px-4 bg-[#FDFBF7] relative overflow-hidden">
@@ -114,79 +114,7 @@ export const VenueMap: React.FC = () => {
         </div>
 
         {/* Expandable Travel & Stay Tips Accordion */}
-        <div className="space-y-3 max-w-2xl mx-auto">
-          {/* Parking & Valet */}
-          <div className="rounded-2xl glass-card border border-[#D4AF37]/30 overflow-hidden shadow-sm">
-            <button
-              type="button"
-              onClick={() => toggleAccordion('parking')}
-              className="w-full flex items-center justify-between p-4 text-left font-serif font-bold text-[#0F4336] cursor-pointer hover:bg-white/40"
-            >
-              <div className="flex items-center gap-2.5">
-                <Car className="w-4 h-4 text-[#D4AF37]" />
-                <span className="text-sm sm:text-base">{t.venue.parkingTitle}</span>
-              </div>
-              <ChevronDown
-                className={`w-4 h-4 text-stone-400 transition-transform duration-300 ${
-                  openAccordion === 'parking' ? 'rotate-180' : ''
-                }`}
-              />
-            </button>
-            {openAccordion === 'parking' && (
-              <div className="px-4 pb-4 pt-1 text-xs sm:text-sm text-stone-600 font-light border-t border-stone-100">
-                {parkingTips}
-              </div>
-            )}
-          </div>
-
-          {/* Stay & Accommodation */}
-          <div className="rounded-2xl glass-card border border-[#D4AF37]/30 overflow-hidden shadow-sm">
-            <button
-              type="button"
-              onClick={() => toggleAccordion('stay')}
-              className="w-full flex items-center justify-between p-4 text-left font-serif font-bold text-[#0F4336] cursor-pointer hover:bg-white/40"
-            >
-              <div className="flex items-center gap-2.5">
-                <Hotel className="w-4 h-4 text-[#D4AF37]" />
-                <span className="text-sm sm:text-base">{t.venue.stayTitle}</span>
-              </div>
-              <ChevronDown
-                className={`w-4 h-4 text-stone-400 transition-transform duration-300 ${
-                  openAccordion === 'stay' ? 'rotate-180' : ''
-                }`}
-              />
-            </button>
-            {openAccordion === 'stay' && (
-              <div className="px-4 pb-4 pt-1 text-xs sm:text-sm text-stone-600 font-light border-t border-stone-100">
-                {stayTips}
-              </div>
-            )}
-          </div>
-
-          {/* Key Landmarks */}
-          <div className="rounded-2xl glass-card border border-[#D4AF37]/30 overflow-hidden shadow-sm">
-            <button
-              type="button"
-              onClick={() => toggleAccordion('landmarks')}
-              className="w-full flex items-center justify-between p-4 text-left font-serif font-bold text-[#0F4336] cursor-pointer hover:bg-white/40"
-            >
-              <div className="flex items-center gap-2.5">
-                <Compass className="w-4 h-4 text-[#D4AF37]" />
-                <span className="text-sm sm:text-base">{t.venue.landmarksTitle}</span>
-              </div>
-              <ChevronDown
-                className={`w-4 h-4 text-stone-400 transition-transform duration-300 ${
-                  openAccordion === 'landmarks' ? 'rotate-180' : ''
-                }`}
-              />
-            </button>
-            {openAccordion === 'landmarks' && (
-              <div className="px-4 pb-4 pt-1 text-xs sm:text-sm text-stone-600 font-light border-t border-stone-100">
-                {landmarks}
-              </div>
-            )}
-          </div>
-        </div>
+       
       </div>
     </section>
   );
