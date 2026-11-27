@@ -216,7 +216,7 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
           name: 'Dr. Suresh Kumar & Family',
           guests: 4,
           attending: 'yes',
-          events: 'Haldi, Reception, Muhurtham',
+          events: "Reception (Bride's Home), Reception, Muhurtham",
           message: 'Heartiest congratulations to Karthik & Ananya! Wishing you endless bliss and happiness.',
           created_at: '2026-10-28 14:30:00',
         },
@@ -650,8 +650,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     type="button"
                     onClick={() => handleSetMenuLayout('wrap')}
                     className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${menuLayout === 'wrap'
-                        ? 'bg-white text-[#0F4336] shadow-sm font-bold'
-                        : 'text-stone-500 hover:text-stone-900'
+                      ? 'bg-white text-[#0F4336] shadow-sm font-bold'
+                      : 'text-stone-500 hover:text-stone-900'
                       }`}
                     title="Wrap all 10 section tabs into visible rows so none are ever cut off"
                   >
@@ -663,8 +663,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     type="button"
                     onClick={() => handleSetMenuLayout('scroll')}
                     className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${menuLayout === 'scroll'
-                        ? 'bg-white text-[#0F4336] shadow-sm font-bold'
-                        : 'text-stone-500 hover:text-stone-900'
+                      ? 'bg-white text-[#0F4336] shadow-sm font-bold'
+                      : 'text-stone-500 hover:text-stone-900'
                       }`}
                     title="Show single-line scrollable ribbon with arrow controls"
                   >
@@ -706,8 +706,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                         type="button"
                         onClick={() => setActiveTab(tab.id)}
                         className={`group flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${isActive
-                            ? 'bg-[#0F4336] text-white shadow-md ring-2 ring-[#D4AF37] scale-102 font-bold'
-                            : 'bg-white text-stone-700 hover:text-[#0F4336] hover:bg-stone-50 border border-stone-200 hover:border-stone-400 active:scale-98'
+                          ? 'bg-[#0F4336] text-white shadow-md ring-2 ring-[#D4AF37] scale-102 font-bold'
+                          : 'bg-white text-stone-700 hover:text-[#0F4336] hover:bg-stone-50 border border-stone-200 hover:border-stone-400 active:scale-98'
                           }`}
                       >
                         <span className="text-sm">{tab.emoji}</span>
@@ -750,8 +750,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                           type="button"
                           onClick={() => setActiveTab(tab.id)}
                           className={`group flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 ${isActive
-                              ? 'bg-[#0F4336] text-white shadow-md ring-2 ring-[#D4AF37] font-bold'
-                              : 'bg-white text-stone-700 hover:text-[#0F4336] hover:bg-stone-50 border border-stone-200 hover:border-stone-400 active:scale-98'
+                            ? 'bg-[#0F4336] text-white shadow-md ring-2 ring-[#D4AF37] font-bold'
+                            : 'bg-white text-stone-700 hover:text-[#0F4336] hover:bg-stone-50 border border-stone-200 hover:border-stone-400 active:scale-98'
                             }`}
                         >
                           <span className="text-sm">{tab.emoji}</span>
@@ -815,8 +815,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                           type="button"
                           onClick={() => handleSelectPreset(key)}
                           className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer relative ${isSelected
-                              ? 'border-2 border-[#0F4336] bg-stone-50 shadow-md ring-2 ring-[#0F4336]/20'
-                              : 'border-stone-200 bg-white hover:border-stone-300 hover:shadow-sm'
+                            ? 'border-2 border-[#0F4336] bg-stone-50 shadow-md ring-2 ring-[#0F4336]/20'
+                            : 'border-stone-200 bg-white hover:border-stone-300 hover:shadow-sm'
                             }`}
                         >
                           <div className="flex items-center justify-between mb-2">
@@ -982,8 +982,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     type="button"
                     onClick={handleTogglePreviewAudio}
                     className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold shadow-md active:scale-95 transition-all cursor-pointer ${isPreviewPlaying
-                        ? 'bg-amber-600 text-white animate-pulse'
-                        : 'bg-[#0F4336] text-white hover:bg-[#0A2B23]'
+                      ? 'bg-amber-600 text-white animate-pulse'
+                      : 'bg-[#0F4336] text-white hover:bg-[#0A2B23]'
                       }`}
                   >
                     {isPreviewPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
@@ -1004,8 +1004,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                           key={preset.id}
                           onClick={() => handleSelectAudioPreset(preset)}
                           className={`p-4 rounded-2xl border cursor-pointer transition-all ${isSelected
-                              ? 'border-2 border-[#0F4336] bg-emerald-50/50 shadow-sm'
-                              : 'border-stone-200 bg-stone-50 hover:border-stone-300'
+                            ? 'border-2 border-[#0F4336] bg-emerald-50/50 shadow-sm'
+                            : 'border-stone-200 bg-stone-50 hover:border-stone-300'
                             }`}
                         >
                           <div className="flex items-center justify-between mb-1">
@@ -2445,8 +2445,8 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                               <span className="font-semibold text-sm text-stone-800">{r.name}</span>
                               <span
                                 className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold ${r.attending === 'yes'
-                                    ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                                    : 'bg-stone-100 text-stone-500 border border-stone-200'
+                                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                                  : 'bg-stone-100 text-stone-500 border border-stone-200'
                                   }`}
                               >
                                 {r.attending === 'yes' ? (

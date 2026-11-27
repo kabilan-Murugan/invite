@@ -37,7 +37,7 @@ export const RSVP: React.FC = () => {
       name: '',
       guests: 1,
       attending: 'yes',
-      events: ['Haldi', 'Reception', 'Muhurtham'],
+      events: ["Reception (Bride's Home)", 'Wedding Reception', 'Auspicious Muhurtham & Thalikettu'],
       message: '',
       honeypot: '',
     },
@@ -192,11 +192,10 @@ export const RSVP: React.FC = () => {
                 </label>
                 <div className="grid grid-cols-2 gap-3">
                   <label
-                    className={`flex items-center justify-center gap-2 p-3 rounded-xl border cursor-pointer min-h-[44px] transition-all text-xs sm:text-sm font-semibold ${
-                      attendingStatus === 'yes'
+                    className={`flex items-center justify-center gap-2 p-3 rounded-xl border cursor-pointer min-h-[44px] transition-all text-xs sm:text-sm font-semibold ${attendingStatus === 'yes'
                         ? 'bg-[#0F4336] text-white border-[#0F4336] shadow-sm'
                         : 'bg-white text-stone-700 border-stone-300 hover:bg-stone-50'
-                    }`}
+                      }`}
                   >
                     <input
                       type="radio"
@@ -208,11 +207,10 @@ export const RSVP: React.FC = () => {
                   </label>
 
                   <label
-                    className={`flex items-center justify-center gap-2 p-3 rounded-xl border cursor-pointer min-h-[44px] transition-all text-xs sm:text-sm font-semibold ${
-                      attendingStatus === 'no'
+                    className={`flex items-center justify-center gap-2 p-3 rounded-xl border cursor-pointer min-h-[44px] transition-all text-xs sm:text-sm font-semibold ${attendingStatus === 'no'
                         ? 'bg-stone-700 text-white border-stone-700 shadow-sm'
                         : 'bg-white text-stone-700 border-stone-300 hover:bg-stone-50'
-                    }`}
+                      }`}
                   >
                     <input
                       type="radio"
