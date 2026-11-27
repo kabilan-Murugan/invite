@@ -12,9 +12,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png', 'og-image.jpg', 'audio/song.mp3'],
       manifest: {
-        name: 'Karthik & Ananya Wedding Invitation',
-        short_name: 'KarAnanya Wedding',
-        description: 'Digital wedding invitation for Karthik and Ananya',
+        name: 'Sajith & Adithya Wedding Invitation',
+        short_name: 'KarAdithya Wedding',
+        description: 'Digital wedding invitation for Sajith and Adithya',
         theme_color: '#6B1E2E',
         background_color: '#FFF8F0',
         display: 'standalone',

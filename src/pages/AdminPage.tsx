@@ -1645,7 +1645,7 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                         value={formData.hashtag}
                         onChange={(e) => setFormData({ ...formData, hashtag: e.target.value })}
                         className="w-full px-3 py-1.5 bg-white rounded-lg border text-xs font-mono text-[#0F4336]"
-                        placeholder="#KarAnanyaForever"
+                        placeholder="#KarAdithyaForever"
                       />
                     </div>
 
@@ -1661,7 +1661,7 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                           })
                         }
                         className="w-full px-3 py-1.5 bg-white rounded-lg border text-xs font-mono"
-                        placeholder="https://karthikwedsananya.com"
+                        placeholder="https://SajithwedsAdithya.com"
                       />
                     </div>
 

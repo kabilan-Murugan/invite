@@ -19,7 +19,7 @@ export const Splash: React.FC = () => {
 
   if (hasOpened) return null;
 
-  // Derives monogram initials from couple's names (e.g. K & A for Karthik & Ananya)
+  // Derives monogram initials from couple's names (e.g. K & A for Sajith & Adithya)
   const groomInitial = (wedding.couple.groom.nameEn[0] || 'K').toUpperCase();
   const brideInitial = (wedding.couple.bride.nameEn[0] || 'A').toUpperCase();
 

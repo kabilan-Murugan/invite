@@ -114,7 +114,7 @@ async function generatePlaceholders() {
       <rect x="25" y="25" width="1150" height="580" rx="16" fill="none" stroke="#C9A227" stroke-width="2" stroke-dasharray="10 6" opacity="0.7"/>
       <circle cx="600" cy="220" r="90" fill="none" stroke="#FFDF78" stroke-width="2" opacity="0.4"/>
       <text x="600" y="190" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#FFDF78" letter-spacing="6">WEDDING INVITATION</text>
-      <text x="600" y="260" text-anchor="middle" font-family="Georgia, serif" font-size="64" font-weight="bold" fill="#FFF8F0">Karthik &amp; Ananya</text>
+      <text x="600" y="260" text-anchor="middle" font-family="Georgia, serif" font-size="64" font-weight="bold" fill="#FFF8F0">Sajith &amp; Adithya</text>
       <text x="600" y="340" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#FFDF78" letter-spacing="3">SUNDAY, NOVEMBER 29, 2026</text>
       <text x="600" y="390" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#E2E8F0">The Grand Chola Palace Hall • Guindy, Chennai</text>
       <text x="600" y="490" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#FFF8F0" opacity="0.8">Tap to view interactive invitation &amp; RSVP</text>
