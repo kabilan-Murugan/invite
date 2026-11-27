@@ -178,8 +178,8 @@ export const Hero: React.FC = () => {
           </div>
           <p className="text-[10px] sm:text-[11.5px] font-serif uppercase tracking-[0.22em] text-[#2D241E] font-semibold mt-1">
             {isMalayalam
-              ? 'പ്രീ-വെഡ്ഡിംഗ് ഓർമ്മകൾ • ഏണസ്റ്റ് & മിഷ്മ'
-              : 'Pre-Wedding Memories • Earnest Paul & Mishma'}
+              ? 'പ്രീ-വെഡ്ഡിംഗ് ഓർമ്മകൾ • സജിത്ത് & ആദിത്യ'
+              : 'Pre-Wedding Memories • Sajith & Adithya'}
           </p>
         </motion.div>
       </div>

@@ -330,8 +330,8 @@ export const weddingData: WeddingConfig = {
       "qualificationMl": "",
       "parentsEn": "Mr. Sathish & Mrs. Priya",
       "parentsMl": "ശ്രീ. സതീഷ് & ശ്രീമതി. പ്രിയ",
-      "familyHomeEn": "Kochi, Kerala",
-      "familyHomeMl": "കൊച്ചി, കേരളം"
+      "familyHomeEn": "karunagappaly, Kerala",
+      "familyHomeMl": "കരുനാഗപ്പള്ളി, കേരളം"
     },
     "bride": {
       "nameEn": "Adithya",
@@ -340,10 +340,10 @@ export const weddingData: WeddingConfig = {
       "fullNameMl": "മിഷ്മ",
       "qualificationEn": "",
       "qualificationMl": "",
-      "parentsEn": "Mr. Ajith Kumar & Mrs. Santhya",
+      "parentsEn": "Mr. Ajith Kumar & Mrs. Sandhya",
       "parentsMl": "ശ്രീ. അജിത് കുമാർ & ശ്രീമതി. സന്ധ്യ",
-      "familyHomeEn": "Kochi, Kerala",
-      "familyHomeMl": "കൊച്ചി, കേരളം"
+      "familyHomeEn": "kottarakkara, Kerala",
+      "familyHomeMl": "കൊട്ടാരക്കര, കേരളം"
     }
   },
   "hashtag": "#sajithWedsadithya",
@@ -387,8 +387,8 @@ export const weddingData: WeddingConfig = {
       "taglineMl": "മാംഗല്യധാരണവും സപ്തപദിയും നടക്കുന്ന പുണ്യ മുഹൂർത്തം",
       "dateEn": "Sunday, February 07, 2027",
       "dateMl": "2027 ഫെബ്രുവരി 7, ഞായറാഴ്ച",
-      "timeEn": "09:00 AM – 10:30 AM (Traditional Sadya follows)",
-      "timeMl": "രാവിലെ 09:00 – 10:30 മണി (തുടർന്ന് വിഭവസമൃദ്ധമായ കല്യാണസദ്യ)",
+      "timeEn": "10:30 AM - 12:40 (Traditional Sadya follows)",
+      "timeMl": "രാവിലെ 10:30 - 12:40 മണി (തുടർന്ന് വിഭവസമൃദ്ധമായ കല്യാണസദ്യ)",
       "startDateIso": "2027-02-07T09:00:00+05:30",
       "endDateIso": "2027-02-07T13:30:00+05:30",
       "venueNameEn": "Shilpa auditorium",
@@ -411,8 +411,8 @@ export const weddingData: WeddingConfig = {
       "dateMl": "2027 ഫെബ്രുവരി 8, തിങ്കളാഴ്ച",
       "timeEn": "06:30 PM onwards (Dinner follows)",
       "timeMl": "വൈകുന്നേരം 06:30 മണി മുതൽ (തുടർന്ന് രാത്രി ഭക്ഷണം)",
-      "startDateIso": "2027-02-08T18:30:00+05:30",
-      "endDateIso": "2027-02-08T22:30:00+05:30",
+      "startDateIso": "2027-02-07T18:30:00+05:30",
+      "endDateIso": "2027-02-07T22:30:00+05:30",
       "venueNameEn": "Faizan auditorium",
       "venueNameMl": "ഫൈസാൻ ഓഡിറ്റോറിയം",
       "addressEn": "Mararithottam, Kallelibhagom, Karunagappally, Kollam district, Kerala 690519",
@@ -578,15 +578,15 @@ export const weddingData: WeddingConfig = {
       "name": "Mr. Sathish (Father)",
       "relationEn": "Groom’s Family",
       "relationMl": "വരന്റെ കുടുംബം",
-      "phone": "+919876543210",
-      "whatsapp": "919876543210"
+      "phone": "+919787381810",
+      "whatsapp": "917904034528"
     },
     "brideSide": {
       "name": "Mr. AjithKumar (Father)",
       "relationEn": "Bride’s Family",
       "relationMl": "വധുവിന്റെ കുടുംബം",
-      "phone": "+919840123456",
-      "whatsapp": "919840123456"
+      "phone": "+919947750031",
+      "whatsapp": "919895574776"
     }
   },
   "venue": {
