@@ -324,8 +324,8 @@ export const weddingData: WeddingConfig = {
     "groom": {
       "nameEn": "Sajith",
       "nameMl": "സജിത്ത്",
-      "fullNameEn": "",
-      "fullNameMl": "ഏണസ്റ്റ് പോൾ",
+      "fullNameEn": "Sajith",
+      "fullNameMl": "സജിത്ത്",
       "qualificationEn": "",
       "qualificationMl": "",
       "parentsEn": "Mr. Sathish & Mrs. Priya",
@@ -336,8 +336,8 @@ export const weddingData: WeddingConfig = {
     "bride": {
       "nameEn": "Adithya",
       "nameMl": "ആദിത്യ",
-      "fullNameEn": "",
-      "fullNameMl": "മിഷ്മ",
+      "fullNameEn": "Adithya",
+      "fullNameMl": "ആദിത്യ",
       "qualificationEn": "",
       "qualificationMl": "",
       "parentsEn": "Mr. Ajith Kumar & Mrs. Sandhya",
@@ -350,8 +350,8 @@ export const weddingData: WeddingConfig = {
   "seo": {
     "siteTitle": "Sajith & Adithya | Wedding Invitation",
     "metaDescription": "United in love, surrounded by grace, we invite you to witness the beginning of our forever.",
-    "ogImage": "/og-image.jpg",
-    "siteUrl": "https://wedding-invitation-8tq.pages.dev",
+    "ogImage": "/og-image.jpg?v=2",
+    "siteUrl": "https://sajithwedsadithya.mktech.fun",
     "noindex": false
   },
   "countdownTargetIso": "2027-02-07T09:30:00+05:30",

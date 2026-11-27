@@ -30,7 +30,7 @@ export const QRCodeSection: React.FC<QRCodeSectionProps> = ({ onOpenPrintable })
     const url = canvas.toDataURL('image/png');
     const a = document.createElement('a');
     a.href = url;
-    a.download = `karthik-ananya-wedding-qr.png`;
+    a.download = `sajith-adithya-wedding-qr.png`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

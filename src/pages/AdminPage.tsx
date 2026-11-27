@@ -217,7 +217,7 @@ export const AdminPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
           guests: 4,
           attending: 'yes',
           events: "Reception (Bride's Home), Reception, Muhurtham",
-          message: 'Heartiest congratulations to Karthik & Ananya! Wishing you endless bliss and happiness.',
+          message: 'Heartiest congratulations to Sajith & Adithya! Wishing you endless bliss and happiness.',
           created_at: '2026-10-28 14:30:00',
         },
         {
